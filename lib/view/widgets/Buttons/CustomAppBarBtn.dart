@@ -7,10 +7,21 @@ import '../../screens/Authentication/SignUp/SignUpScreen.dart';
 
 class CustomAppBarBtn extends StatelessWidget {
   String? Txt;
+  StatefulWidget Page;
 
   CustomAppBarBtn({
     required this.Txt,
+    required this.Page,
   });
+
+  void NavigatorTo(BuildContext context)
+  {
+    Navigator.push(context, MaterialPageRoute(
+        builder: (BuildContext context) {
+          return Page;
+        }));
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +39,7 @@ class CustomAppBarBtn extends StatelessWidget {
           //backgroundColor: Colors.transparent
         ),
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (BuildContext context) {
-                return SignUpScreen();
-              }));
+          return NavigatorTo(context);
         },
         child: Text(
           "$Txt",

@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutter_petology/view/widgets/Text/CustomTxt.dart';
-
 import '../../../constants.dart';
-import '../../widgets/Buttons/BackgroundApdation.dart';
 import '../../widgets/Buttons/CustomAppBarBtn.dart';
+import '../../widgets/Buttons/CustomBorderBtn.dart';
+import '../../widgets/Buttons/CustomDropMenuBtn.dart';
+import '../../widgets/Buttons/CustomHoverBtn.dart';
 import '../../widgets/Buttons/CustomTxtBtn.dart';
 import '../../widgets/Footer/Footerr.dart';
+import '../../widgets/Text/CustomTxt.dart';
+import 'dart:math' as math;
+
+import '../AboutUs/AboutUsScreen.dart';
+import '../Authentication/Login/LoginScreen.dart';
+import '../Authentication/SignUp/SignUpScreen.dart';
+import '../Home/HomeScreen.dart';
+import '../Request/RequestScreen.dart';
+import 'AdaptionHomeScreen.dart';
+import 'AdaptionInfoScreen.dart';
 
 class AdaptionGeneralScreen extends StatefulWidget {
   const AdaptionGeneralScreen({Key? key}) : super(key: key);
@@ -19,12 +29,11 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: brown,
         flexibleSpace: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
                   image:
-                      AssetImage('assets/images/background/Rectangle 11.png'),
+                  AssetImage('assets/images/background/Rectangle 11.png'),
                   fit: BoxFit.cover)),
         ),
         leading: Image.asset(
@@ -33,199 +42,580 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
         leadingWidth: 300,
         actions: [
           //About Us
-          CustomTxtBtn(Txt: 'About Us'),
+          CustomTxtBtn(Txt: 'About Us', Page: HomeScreen(),),
 
           //Categories
-          CustomTxtBtn(Txt: 'Categories'),
+          CustomTxtBtn(Txt: 'Adaptaion', Page: AdaptionHomeScreen(),),
 
           //Request
-          CustomTxtBtn(Txt: 'Request'),
+          CustomTxtBtn(Txt: 'Request', Page: RequestScreen(),),
 
           //Services
-          CustomTxtBtn(Txt: 'Services'),
+          CustomTxtBtn(Txt: 'Services', Page: HomeScreen(),),
 
           //SignUp
-          CustomAppBarBtn(Txt: 'SignUp'),
+          CustomAppBarBtn(Txt: 'SignUp', Page: SignUpScreen(),),
 
           //Login
-          CustomAppBarBtn(Txt: 'Login'),
+          CustomAppBarBtn(Txt: 'Login', Page: LoginScreen()),
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
+        child: Stack(
           children: [
-            //background
-            Stack(
+
+            //background bottom
+            Container(
+                margin: EdgeInsets.only(top: 850, left: 250),
+                child: Image.asset(
+                  "assets/images/background/Icon material-pets.png",
+                  width: 400,
+                )),
+
+            //background top
+            Container(
+                margin: EdgeInsets.only(top: 20, left: 1050),
+                child: Image.asset(
+                  "assets/images/background/Icon material-pets.png",
+                  width: 400,
+                )),
+
+            //background LEFT TOP
+            Container(
+                margin: EdgeInsets.only(top: 20, left: 350),
+                child: Transform(
+                  transform: Matrix4.rotationY(math.pi),
+                  child: Image.asset(
+                    "assets/images/background/Icon material-pets.png",
+                    width: 400,
+                  ),
+                )),
+
+            Column(
               children: [
-                //pattern background
-                Container(
-                  height: 700,
-                  //color: brown,
-                  decoration: BoxDecoration(
-                      image: new DecorationImage(
-                          image: AssetImage(
-                              "assets/images/background/Rectangle 11.png"),
-                          fit: BoxFit.cover)),
-                ),
 
-                //bones background
-                Container(
-                  margin: EdgeInsets.only(top: 120),
-                  height: 400,
-                  //color: brown,
-                  decoration: BoxDecoration(
-                      image: new DecorationImage(
-                          image: AssetImage(
-                              "assets/images/background/background2.png"),
-                          fit: BoxFit.contain)),
-                ),
 
-                //bowl background
-                Container(
-                  margin: EdgeInsets.only(top: 500),
-                  height: 200,
-                  //color: brown,
-                  decoration: BoxDecoration(
-                      image: new DecorationImage(
-                          image: AssetImage(
-                              "assets/images/299-removebg-preview.png"),
-                          fit: BoxFit.contain)),
-                ),
-              ],
-            ),
-            SingleChildScrollView(
-              child: Container(
-                color: Colors.white,
-                width: double.infinity,
 
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 70, left: 70),
-                      child: CustomTxt(
-                          Title: "How you feed Your Dog?",
+                //Names first (text)
+                Padding(
+                  padding: const EdgeInsets.only(top: 90),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    // crossAxisAlignment: CrossAxisAlignment.,
+                    children: [
+                      //Bread
+                      SizedBox(
+                        width: 80,
+                      ),
+                      CustomTxt(
+                          Title: "Bread",
                           ColorTxt: aftergray,
-                          FontSizeTxt: fontLastTitle,
+                          FontSizeTxt: fontLoginText,
                           FontWeightTxt: FontWeight.bold),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 70),
-                      child: CustomTxt(
-                          Title:
-                              "As a general rule, puppies and young dogs burn more calories, so they need a greater quantity \nof food that is higher in protein and fat. Older, less active dogs require fewer calories to remain healthy.",
-                          ColorTxt: brown,
+
+                      //Age
+                      SizedBox(
+                        width: 300,
+                      ),
+                      CustomTxt(
+                          Title: "Age",
+                          ColorTxt: aftergray,
                           FontSizeTxt: fontLoginText,
-                          FontWeightTxt: FontWeight.normal),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 70),
-                      child: CustomTxt(
-                          Title:
-                              "Richard H. Pitcairn, DVM, PhD, author of Dr. Pitcairn’s Complete Guide to Natural Health \n"
-                                  "for Dogs and Cats, believes the most reliable approach is to feed what seems to be a reasonable\n amount and monitor his body weight.",
-                          ColorTxt: brown,
+                          FontWeightTxt: FontWeight.bold),
+
+                      //Size
+                      SizedBox(
+                        width: 300,
+                      ),
+                      CustomTxt(
+                          Title: "Size",
+                          ColorTxt: aftergray,
                           FontSizeTxt: fontLoginText,
-                          FontWeightTxt: FontWeight.normal),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 70),
-                      child: CustomTxt(
-                          Title:
-                              "You should be able to feel your pet’s ribs easily as you slide your hand over his sides,” \nPitcairn says. “If you can’t, he’s probably too heavy, so begin to feed a smaller quantity.",
-                          ColorTxt: brown,
+                          FontWeightTxt: FontWeight.bold),
+
+                      //Good with
+                      SizedBox(
+                        width: 300,
+                      ),
+                      CustomTxt(
+                          Title: "Good with",
+                          ColorTxt: aftergray,
                           FontSizeTxt: fontLoginText,
-                          FontWeightTxt: FontWeight.normal),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 70),
-                      child: CustomTxt(
-                          Title:
-                              "If you’re using a commercial pet food, beware of the “feeding guidelines” on the bag or box. \nIt lists different weights and the corresponding amount of food to feed your dog to maintain that weight, \nand should be used only as a rough guideline.",
-                          ColorTxt: brown,
+                          FontWeightTxt: FontWeight.bold),
+                    ],
+                  ),
+                ),
+
+                //Names first (Dropbox)
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Row(
+                    children: [
+                      //Bread
+                      SizedBox(
+                        width: 80,
+                      ),
+                      CustomDropMenuBtn(
+                        BoxWidth: boxWidthDropMenu,
+                      ),
+
+                      //Age
+                      SizedBox(
+                        width: 160,
+                      ),
+                      CustomDropMenuBtn(
+                        BoxWidth: boxWidthDropMenu,
+                      ),
+
+                      //Size
+                      SizedBox(
+                        width: 160,
+                      ),
+                      CustomDropMenuBtn(
+                        BoxWidth: boxWidthDropMenu,
+                      ),
+
+                      //Good with
+                      SizedBox(
+                        width: 160,
+                      ),
+                      CustomDropMenuBtn(
+                        BoxWidth: boxWidthDropMenu,
+                      )
+                    ],
+                  ),
+                ),
+
+                //Names second (text)
+                Padding(
+                  padding: const EdgeInsets.only(top: 90),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    // crossAxisAlignment: CrossAxisAlignment.,
+                    children: [
+                      //Gender
+                      SizedBox(
+                        width: 80,
+                      ),
+                      CustomTxt(
+                          Title: "Gender",
+                          ColorTxt: aftergray,
                           FontSizeTxt: fontLoginText,
-                          FontWeightTxt: FontWeight.normal),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 70),
-                      child: CustomTxt(
-                          Title:
-                              "Many dogs are overweight because their families closely followed the directions on the label, \nwhich often indicates portion sizes that are too large. After all, \nthe sooner the bag is empty, the sooner you will need to buy more food.",
-                          ColorTxt: brown,
+                          FontWeightTxt: FontWeight.bold),
+
+                      //Color
+                      SizedBox(
+                        width: 270,
+                      ),
+                      CustomTxt(
+                          Title: "Color",
+                          ColorTxt: aftergray,
                           FontSizeTxt: fontLoginText,
-                          FontWeightTxt: FontWeight.normal),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 70),
-                      child: CustomTxt(
-                          Title:
-                              "Starting at the low end of the suggested guidelines and then monitoring your dog for hunger and \nbody condition is a good way to proceed.",
-                          ColorTxt: brown,
+                          FontWeightTxt: FontWeight.bold),
+
+                      //Hair Length
+                      SizedBox(
+                        width: 300,
+                      ),
+                      CustomTxt(
+                          Title: "Hair Length",
+                          ColorTxt: aftergray,
                           FontSizeTxt: fontLoginText,
-                          FontWeightTxt: FontWeight.normal),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 70),
-                      child: CustomTxt(
-                          Title:
-                              "Different Portions for Different Pooches",
-                          ColorTxt: brown,
+                          FontWeightTxt: FontWeight.bold),
+
+                      //Care & Behavior
+                      SizedBox(
+                        width: 210,
+                      ),
+                      CustomTxt(
+                          Title: "Care & Behavior",
+                          ColorTxt: aftergray,
                           FontSizeTxt: fontLoginText,
-                          FontWeightTxt: FontWeight.normal),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 70),
-                      child: CustomTxt(
-                          Title:
-                              "Though it may sound counterintuitive, as a general rule, large breed dogs require less food and \nsmall breed dogs require more food when expressed on a volume of food per pound of body weight. \nThe food requirements of individual dogs vary according to their health, level of activity, and age.",
-                          ColorTxt: brown,
-                          FontSizeTxt: fontLoginText,
-                          FontWeightTxt: FontWeight.normal),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 70),
-                      child: CustomTxt(
-                          Title:
-                              "Here are some guidelines for portion sizes at different stages of your dog’s life:",
-                          ColorTxt: brown,
-                          FontSizeTxt: fontLoginText,
-                          FontWeightTxt: FontWeight.normal),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 70),
-                      child: CustomTxt(
-                          Title:
-                              "Puppies: Puppies are typically introduced to solid food at three to four weeks of age and are completely \nweaned from their mother’s milk by eight weeks.",
-                          ColorTxt: brown,
-                          FontSizeTxt: fontLoginText,
-                          FontWeightTxt: FontWeight.normal),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 70),
-                      child: CustomTxt(
-                          Title:
-                              "Puppies require a diet that is higher in protein and other nutrients to support normal growth and \ndevelopment. If you are feeding commercial pet food to your adopted puppy, select a brand \nthat is specially formulated for puppies.",
-                          ColorTxt: brown,
-                          FontSizeTxt: fontLoginText,
-                          FontWeightTxt: FontWeight.normal),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 70),
-                      child: CustomTxt(
-                          Title:
-                              "Young puppies should be fed at least three times a day — morning, noon, and early evening — \nuntil their food requirements per pound of body weight begin to level off as they mature.",
-                          ColorTxt: brown,
-                          FontSizeTxt: fontLoginText,
-                          FontWeightTxt: FontWeight.normal),
+                          FontWeightTxt: FontWeight.bold),
+                    ],
+                  ),
+                ),
+
+                //Names first (Dropbox)
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Row(
+                    children: [
+                      //Gender
+                      SizedBox(
+                        width: 80,
+                      ),
+                      CustomDropMenuBtn(
+                        BoxWidth: boxWidthDropMenu,
+                      ),
+
+                      //Color
+                      SizedBox(
+                        width: 160,
+                      ),
+                      CustomDropMenuBtn(
+                        BoxWidth: boxWidthDropMenu,
+                      ),
+
+                      //Hair Length
+                      SizedBox(
+                        width: 160,
+                      ),
+                      CustomDropMenuBtn(
+                        BoxWidth: boxWidthDropMenu,
+                      ),
+
+                      //Care & Behavior
+                      SizedBox(
+                        width: 160,
+                      ),
+                      CustomDropMenuBtn(
+                        BoxWidth: boxWidthDropMenu,
+                      )
+                    ],
+                  ),
+                ),
+
+                //card 1
+                Row(
+                  children: [
+
+                    //Elsa
+                    SizedBox(width: 150,),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CustomHoverBtn(
+                            widthBtn: 340,
+                            heightBtn: 500,
+                            hoverColBtn: colCardAdpat,
+                            colBtn: colCardAdpat,
+                            thicknessBorder: 0,
+                            txtBtn: "Elsa",
+                            colrTxtBtn: aftergray,
+                            fontSizeBtn: fontLoginText, Page: AdaptionInfoScreen(),),
+
+                        //img
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 200, top: 60),
+                          padding: const EdgeInsets.only(bottom: 90),
+                          child: Image.asset(
+                            "assets/images/pic-aboutus2.png",
+                            height: 380,
+                          ),
+                        ),
+
+                        //btn
+                        Container(
+                          margin: EdgeInsets.only(top: 350),
+                          child: ButtonTheme(
+                            minWidth: 250,
+                            height: 80,
+                            child: CustomBorderBtn(
+                              colBtn: aftergray,
+                              thickness: 0,
+                              colThickness: colrTextBtn,
+                              colTxt: colrTextBtn,
+                                Page: AdaptionInfoScreen()
+                            ),
+                          ),
+                        ),
+
+                        //by who
+                        Container(
+                          margin: EdgeInsets.only(top: 450),
+                          child: CustomTxt(
+                              Title: "By Ola",
+                              ColorTxt: brown,
+                              FontSizeTxt: fontSmallText,
+                              FontWeightTxt: FontWeight.bold),
+                        )
+                      ],
                     ),
 
-                    SizedBox(height: 40,),
-                    Footerr()
+                    //Roy
+                    SizedBox(width: 90,),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CustomHoverBtn(
+                            widthBtn: 340,
+                            heightBtn: 500,
+                            hoverColBtn: colCardAdpat,
+                            colBtn: colCardAdpat,
+                            thicknessBorder: 0,
+                            txtBtn: "Roy",
+                            colrTxtBtn: aftergray,
+                            fontSizeBtn: fontLoginText,
+                            Page: AdaptionInfoScreen()),
+
+                        //img
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 200, top: 60),
+                          padding: const EdgeInsets.only(bottom: 90),
+                          child: Image.asset(
+                            "assets/images/pic-aboutus.png",
+                            height: 380,
+                          ),
+                        ),
+
+                        //btn
+                        Container(
+                          margin: EdgeInsets.only(top: 350),
+                          child: ButtonTheme(
+                            minWidth: 250,
+                            height: 80,
+                            child: CustomBorderBtn(
+                              colBtn: aftergray,
+                              thickness: 0,
+                              colThickness: colrTextBtn,
+                              colTxt: colrTextBtn,
+                                Page: AdaptionInfoScreen()
+                            ),
+                          ),
+                        ),
+
+                        //by who
+                        Container(
+                          margin: EdgeInsets.only(top: 450),
+                          child: CustomTxt(
+                              Title: "By Ola",
+                              ColorTxt: brown,
+                              FontSizeTxt: fontSmallText,
+                              FontWeightTxt: FontWeight.bold),
+                        )
+                      ],
+                    ),
+
+                    //Doby
+                    SizedBox(width: 90,),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CustomHoverBtn(
+                            widthBtn: 340,
+                            heightBtn: 500,
+                            hoverColBtn: colCardAdpat,
+                            colBtn: colCardAdpat,
+                            thicknessBorder: 0,
+                            txtBtn: "Doby",
+                            colrTxtBtn: aftergray,
+                            fontSizeBtn: fontLoginText,
+                            Page: AdaptionInfoScreen()),
+
+                        //img
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 200, top: 60),
+                          padding: const EdgeInsets.only(bottom: 90),
+                          child: Image.asset(
+                            "assets/images/pic-aboutus3.png",
+                            height: 380,
+                          ),
+                        ),
+
+                        //btn
+                        Container(
+                          margin: EdgeInsets.only(top: 350),
+                          child: ButtonTheme(
+                            minWidth: 250,
+                            height: 80,
+                            child: CustomBorderBtn(
+                              colBtn: aftergray,
+                              thickness: 0,
+                              colThickness: colrTextBtn,
+                              colTxt: colrTextBtn,
+                                Page: AdaptionInfoScreen()
+                            ),
+                          ),
+                        ),
+
+                        //by who
+                        Container(
+                          margin: EdgeInsets.only(top: 450),
+                          child: CustomTxt(
+                              Title: "By Ola",
+                              ColorTxt: brown,
+                              FontSizeTxt: fontSmallText,
+                              FontWeightTxt: FontWeight.bold),
+                        )
+                      ],
+                    )
                   ],
                 ),
-              ),
-            )
+
+                //card 2
+                Row(
+                  children: [
+                    //Elsa
+                    SizedBox(width: 150,),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CustomHoverBtn(
+                            widthBtn: 340,
+                            heightBtn: 500,
+                            hoverColBtn: colCardAdpat,
+                            colBtn: colCardAdpat,
+                            thicknessBorder: 0,
+                            txtBtn: "Elsa",
+                            colrTxtBtn: aftergray,
+                            fontSizeBtn: fontLoginText,
+                            Page: AdaptionInfoScreen()),
+
+                        //img
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 200, top: 60),
+                          padding: const EdgeInsets.only(bottom: 90),
+                          child: Image.asset(
+                            "assets/images/pic-aboutus2.png",
+                            height: 380,
+                          ),
+                        ),
+
+                        //btn
+                        Container(
+                          margin: EdgeInsets.only(top: 350),
+                          child: ButtonTheme(
+                            minWidth: 250,
+                            height: 80,
+                            child: CustomBorderBtn(
+                              colBtn: aftergray,
+                              thickness: 0,
+                              colThickness: colrTextBtn,
+                              colTxt: colrTextBtn,
+                                Page: AdaptionInfoScreen()
+                            ),
+                          ),
+                        ),
+
+                        //by who
+                        Container(
+                          margin: EdgeInsets.only(top: 450),
+                          child: CustomTxt(
+                              Title: "By Ola",
+                              ColorTxt: brown,
+                              FontSizeTxt: fontSmallText,
+                              FontWeightTxt: FontWeight.bold),
+                        )
+                      ],
+                    ),
+
+                    //Roy
+                    SizedBox(width: 90,),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CustomHoverBtn(
+                            widthBtn: 340,
+                            heightBtn: 500,
+                            hoverColBtn: colCardAdpat,
+                            colBtn: colCardAdpat,
+                            thicknessBorder: 0,
+                            txtBtn: "Roy",
+                            colrTxtBtn: aftergray,
+                            fontSizeBtn: fontLoginText,
+                            Page: AdaptionInfoScreen()),
+
+                        //img
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 200, top: 60),
+                          padding: const EdgeInsets.only(bottom: 90),
+                          child: Image.asset(
+                            "assets/images/pic-aboutus.png",
+                            height: 380,
+                          ),
+                        ),
+
+                        //btn
+                        Container(
+                          margin: EdgeInsets.only(top: 350),
+                          child: ButtonTheme(
+                            minWidth: 250,
+                            height: 80,
+                            child: CustomBorderBtn(
+                              colBtn: aftergray,
+                              thickness: 0,
+                              colThickness: colrTextBtn,
+                              colTxt: colrTextBtn,
+                                Page: AdaptionInfoScreen()
+                            ),
+                          ),
+                        ),
+
+                        //by who
+                        Container(
+                          margin: EdgeInsets.only(top: 450),
+                          child: CustomTxt(
+                              Title: "By Ola",
+                              ColorTxt: brown,
+                              FontSizeTxt: fontSmallText,
+                              FontWeightTxt: FontWeight.bold),
+                        )
+                      ],
+                    ),
+
+                    //Doby
+                    SizedBox(width: 90,),
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CustomHoverBtn(
+                            widthBtn: 340,
+                            heightBtn: 500,
+                            hoverColBtn: colCardAdpat,
+                            colBtn: colCardAdpat,
+                            thicknessBorder: 0,
+                            txtBtn: "Doby",
+                            colrTxtBtn: aftergray,
+                            fontSizeBtn: fontLoginText,
+                            Page: AdaptionInfoScreen()),
+
+                        //img
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 200, top: 60),
+                          padding: const EdgeInsets.only(bottom: 90),
+                          child: Image.asset(
+                            "assets/images/pic-aboutus3.png",
+                            height: 380,
+                          ),
+                        ),
+
+                        //btn
+                        Container(
+                          margin: EdgeInsets.only(top: 350),
+                          child: ButtonTheme(
+                            minWidth: 250,
+                            height: 80,
+                            child: CustomBorderBtn(
+                              colBtn: aftergray,
+                              thickness: 0,
+                              colThickness: colrTextBtn,
+                              colTxt: colrTextBtn,
+                                Page: AdaptionInfoScreen()
+                            ),
+                          ),
+                        ),
+
+                        //by who
+                        Container(
+                          margin: EdgeInsets.only(top: 450),
+                          child: CustomTxt(
+                              Title: "By Ola",
+                              ColorTxt: brown,
+                              FontSizeTxt: fontSmallText,
+                              FontWeightTxt: FontWeight.bold),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+
+                Footerr()
+              ],
+            ),
           ],
+
+
         ),
       ),
     );

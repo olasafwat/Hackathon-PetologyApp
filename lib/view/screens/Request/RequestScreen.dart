@@ -10,7 +10,11 @@ import '../../widgets/Buttons/CustomTxtBtn.dart';
 import '../../widgets/Footer/Footerr.dart';
 import '../../widgets/Text/CustomTxt.dart';
 import '../../widgets/Text/CustomTxtFormField.dart';
+import '../AboutUs/AboutUsScreen.dart';
+import '../Adaption/AdaptionHomeScreen.dart';
 import '../Authentication/Login/LoginScreen.dart';
+import '../Authentication/SignUp/SignUpScreen.dart';
+import '../Home/HomeScreen.dart';
 
 class RequestScreen extends StatefulWidget {
   const RequestScreen({Key? key}) : super(key: key);
@@ -24,29 +28,35 @@ class _RequestScreenState extends State<RequestScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: brown,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image:
+                  AssetImage('assets/images/background/Rectangle 11.png'),
+                  fit: BoxFit.cover)),
+        ),
         leading: Image.asset(
           "assets/images/Logo/logo.png",
         ),
         leadingWidth: 300,
         actions: [
           //About Us
-          CustomTxtBtn(Txt: 'About Us'),
+          CustomTxtBtn(Txt: 'About Us', Page: HomeScreen(),),
 
           //Categories
-          CustomTxtBtn(Txt: 'Categories'),
+          CustomTxtBtn(Txt: 'Adaptaion', Page: AdaptionHomeScreen(),),
 
           //Request
-          CustomTxtBtn(Txt: 'Request'),
+          CustomTxtBtn(Txt: 'Request', Page: RequestScreen(),),
 
           //Services
-          CustomTxtBtn(Txt: 'Services'),
+          CustomTxtBtn(Txt: 'Services', Page: HomeScreen(),),
 
           //SignUp
-          CustomAppBarBtn(Txt: 'SignUp'),
+          CustomAppBarBtn(Txt: 'SignUp', Page: SignUpScreen(),),
 
           //Login
-          CustomAppBarBtn(Txt: 'Login'),
+          CustomAppBarBtn(Txt: 'Login', Page: LoginScreen()),
         ],
       ),
       body: Container(
@@ -288,7 +298,7 @@ class _RequestScreenState extends State<RequestScreen> {
                     SizedBox(height: 18),
 
                     //Button Send
-                    CustomBtn(TxtBtn: 'Send', TxtColrBtn: colrTextBtn,ColrBtn: brown ),
+                    CustomBtn(TxtBtn: 'Send', TxtColrBtn: colrTextBtn,ColrBtn: brown,Page: HomeScreen()),
 
                     SizedBox(height: 40),
 
@@ -296,6 +306,12 @@ class _RequestScreenState extends State<RequestScreen> {
                   ],
                 ),
               ),
+
+              //footer
+              Padding(
+                padding: const EdgeInsets.only(top:1650),
+                child: Footerr(),
+              )
 
             ],
 

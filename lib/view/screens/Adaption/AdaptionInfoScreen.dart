@@ -2,11 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_flutter_petology/view/widgets/Buttons/CustomCircleBtn.dart';
 import 'package:hackathon_flutter_petology/view/widgets/Buttons/CustomSwipeBtn.dart';
+import 'package:hackathon_flutter_petology/view/widgets/Footer/Footerr.dart';
 import 'package:hackathon_flutter_petology/view/widgets/Text/CustomTxt.dart';
 
 import '../../../constants.dart';
 import '../../widgets/Buttons/CustomAppBarBtn.dart';
 import '../../widgets/Buttons/CustomTxtBtn.dart';
+import '../Authentication/Login/LoginScreen.dart';
+import '../Authentication/SignUp/SignUpScreen.dart';
+import '../Home/HomeScreen.dart';
+import '../Request/RequestScreen.dart';
+import 'AdaptionHomeScreen.dart';
 
 class AdaptionInfoScreen extends StatefulWidget {
   const AdaptionInfoScreen({Key? key}) : super(key: key);
@@ -20,12 +26,11 @@ class _AdaptionInfoScreenState extends State<AdaptionInfoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: brown,
         flexibleSpace: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
                   image:
-                      AssetImage('assets/images/background/Rectangle 11.png'),
+                  AssetImage('assets/images/background/Rectangle 11.png'),
                   fit: BoxFit.cover)),
         ),
         leading: Image.asset(
@@ -34,27 +39,29 @@ class _AdaptionInfoScreenState extends State<AdaptionInfoScreen> {
         leadingWidth: 300,
         actions: [
           //About Us
-          CustomTxtBtn(Txt: 'About Us'),
+          CustomTxtBtn(Txt: 'About Us', Page: HomeScreen(),),
 
           //Categories
-          CustomTxtBtn(Txt: 'Categories'),
+          CustomTxtBtn(Txt: 'Adaptaion', Page: AdaptionHomeScreen(),),
 
           //Request
-          CustomTxtBtn(Txt: 'Request'),
+          CustomTxtBtn(Txt: 'Request', Page: RequestScreen(),),
 
           //Services
-          CustomTxtBtn(Txt: 'Services'),
+          CustomTxtBtn(Txt: 'Services', Page: HomeScreen(),),
 
           //SignUp
-          CustomAppBarBtn(Txt: 'SignUp'),
+          CustomAppBarBtn(Txt: 'SignUp', Page: SignUpScreen(),),
 
           //Login
-          CustomAppBarBtn(Txt: 'Login'),
+          CustomAppBarBtn(Txt: 'Login', Page: LoginScreen()),
         ],
       ),
       body: SingleChildScrollView(
           child: Column(
             children: [
+
+              //background
               Container(
                   height: 700,
                   //color: brown,
@@ -111,13 +118,13 @@ class _AdaptionInfoScreenState extends State<AdaptionInfoScreen> {
                 ],
               )),
 
+              //body
               Container(
                 padding: const EdgeInsets.only(top: 70, left: 70),
                 width: double.infinity,
-                height: 800,
+                height: 1500,
 
-                child: SingleChildScrollView(
-                  child: Column(
+                child:  Column(
                    // mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
 
@@ -204,6 +211,7 @@ class _AdaptionInfoScreenState extends State<AdaptionInfoScreen> {
                           FontSizeTxt: fontLastText2,
                           FontWeightTxt: FontWeight.normal),
 
+                      //row + alram
                       SizedBox(height: 15,),
                       Container(
                         height: 90,
@@ -212,24 +220,70 @@ class _AdaptionInfoScreenState extends State<AdaptionInfoScreen> {
                         child: Row(
                           children: [
 
-                            Image.asset("assets/images/icons/Icon ionic-ios-notifications-outline.png",width: 50,),
-                            CustomTxt(
-                                Title: "Petfinder recommends that you should always take reasonable \nsecurity steps before making adabtion.",
-                                ColorTxt: aftergray,
-                                FontSizeTxt: 20,
-                                FontWeightTxt: FontWeight.bold),
+                            //alarm
+                            Container(
+                                margin: EdgeInsets.only(left:30),
+                                child: Image.asset("assets/images/icons/Icon ionic-ios-notifications-outline.png",width: 50,)),
+
+                            //txt
+                            Container(
+                              margin: EdgeInsets.only(left:60),
+                              child: CustomTxt(
+                                  Title: "Petfinder recommends that you should always take reasonable security steps before making adabtion.",
+                                  ColorTxt: aftergray,
+                                  FontSizeTxt: 20,
+                                  FontWeightTxt: FontWeight.bold),
+                            ),
                           ],
                         ),
                       ),
+
+                      //Meet Elsa
+                      SizedBox(height: 30,),
+                      CustomTxt(
+                          Title: "Meet Elsa",
+                          ColorTxt: aftergray,
+                          FontSizeTxt: 50,
+                          FontWeightTxt: FontWeight.bold),
+
+                      //Hi
+                      SizedBox(height: 30,),
+                      CustomTxt(
+                          Title: "Hi",
+                          ColorTxt: aftergray,
+                          FontSizeTxt: fontLastText2,
+                          FontWeightTxt: FontWeight.normal),
+
+
+                      SizedBox(height: 30,),
+                      CustomTxt(
+                          Title: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore \net dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. \nStet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor \nsit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna \naliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita",
+                          ColorTxt: aftergray,
+                          FontSizeTxt: fontLastText2,
+                          FontWeightTxt: FontWeight.normal),
+                      SizedBox(height: 30,),
+                      CustomTxt(
+                          Title: "kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur\n sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. \nAt vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est \nLorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod \ntempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo \nduo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\nLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt \nut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet cli",
+                          ColorTxt: aftergray,
+                          FontSizeTxt: fontLastText2,
+                          FontWeightTxt: FontWeight.normal),
 
 
 
                     ],
                   ),
-                ),
-              )
+
+
+
+              ),
+              SizedBox(height: 20,),
+
+              //footer
+              Footerr()
+
             ],
           ),
+
       ),
     );
   }

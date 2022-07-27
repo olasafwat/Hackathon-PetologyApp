@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:hackathon_flutter_petology/view/screens/Authentication/Login/LoginScreen.dart';
 
 import 'view/screens/AboutUs/AboutUsScreen.dart';
-import 'view/screens/Adaption/AdaptionGeneralScreen.dart';
 import 'view/screens/Adaption/AdaptionHomeScreen.dart';
+import 'view/screens/Adaption/AdaptionGeneralScreen.dart';
 import 'view/screens/Adaption/AdaptionInfoScreen.dart';
 import 'view/screens/Authentication/SignUp/SignUpScreen.dart';
+import 'view/screens/ChooseDogsOrCats/ChooseDogsOrCatsScreen.dart';
 import 'view/screens/Help/HelpFriendScreen.dart';
 import 'view/screens/Home/HomeScreen.dart';
 import 'view/screens/Request/RequestScreen.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SignUpScreen(),
+      home: const HomeScreen(),
     );
   }
 }

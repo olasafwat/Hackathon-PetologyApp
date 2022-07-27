@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_flutter_petology/constants.dart';
 
 class CustomTxt extends StatelessWidget {
   String? Title;
@@ -21,6 +22,7 @@ class CustomTxt extends StatelessWidget {
         textAlign: TextAlign.justify,
 
       style: TextStyle(
+
           color: ColorTxt,
           fontSize: FontSizeTxt,
           fontWeight: FontWeightTxt,

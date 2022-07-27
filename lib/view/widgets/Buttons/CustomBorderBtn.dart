@@ -11,6 +11,7 @@ class CustomBorderBtn extends StatelessWidget {
   Color colThickness;
   double thickness;
   Color colTxt;
+  StatefulWidget Page;
 
 
   CustomBorderBtn({
@@ -18,7 +19,17 @@ class CustomBorderBtn extends StatelessWidget {
     required this.colThickness,
     required this.thickness,
     required this.colTxt,
+    required this.Page,
   });
+
+  void NavigatorTo(BuildContext context)
+  {
+    Navigator.push(context, MaterialPageRoute(
+        builder: (BuildContext context) {
+          return Page;
+        }));
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +42,7 @@ class CustomBorderBtn extends StatelessWidget {
               color: colThickness, width: thickness)),
 
       onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder:
-                (BuildContext context) {
-              return LoginScreen();
-            }));
+        return NavigatorTo(context);
       },
       child: Padding(
         padding: const EdgeInsets.only(

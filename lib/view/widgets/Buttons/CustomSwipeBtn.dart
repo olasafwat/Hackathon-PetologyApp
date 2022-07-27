@@ -7,9 +7,14 @@ import '../../screens/Authentication/Login/LoginScreen.dart';
 class CustomSwipeBtn extends StatelessWidget {
   TextDirection textDirection;
 
+
   CustomSwipeBtn({
     required this.textDirection,
+
   });
+
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,10 +22,7 @@ class CustomSwipeBtn extends StatelessWidget {
       child: FloatingActionButton(
         backgroundColor: brown,
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (BuildContext context) {
-                return LoginScreen();
-              }));
+
         },
         child: Icon(textDirection:textDirection,
           Icons.arrow_forward_ios,

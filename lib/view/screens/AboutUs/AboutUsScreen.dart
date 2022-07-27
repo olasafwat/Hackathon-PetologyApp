@@ -1,3 +1,4 @@
+/*
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +15,12 @@ import '../../widgets/Buttons/CustomTxtBtn.dart';
 import '../../widgets/Footer/Footerr.dart';
 import '../../widgets/Footer/FooterForm.dart';
 import '../../widgets/Text/CustomTxt.dart';
+import '../Adaption/AdaptionHomeScreen.dart';
 import '../Authentication/Login/LoginScreen.dart';
 import 'dart:math' as math;
+
+import '../Authentication/SignUp/SignUpScreen.dart';
+import '../Request/RequestScreen.dart';
 
 class AboutUsScreen extends StatefulWidget {
   const AboutUsScreen({Key? key}) : super(key: key);
@@ -38,29 +43,28 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                   AssetImage('assets/images/background/Rectangle 11.png'),
                   fit: BoxFit.cover)),
         ),
-        //backgroundColor: brown,
         leading: Image.asset(
           "assets/images/Logo/logo.png",
         ),
         leadingWidth: 300,
         actions: [
           //About Us
-          CustomTxtBtn(Txt: 'About Us'),
+          CustomTxtBtn(Txt: 'About Us', Page: AboutUsScreen(),),
 
           //Categories
-          CustomTxtBtn(Txt: 'Categories'),
+          CustomTxtBtn(Txt: 'Adaptaion', Page: AdaptionHomeScreen(),),
 
           //Request
-          CustomTxtBtn(Txt: 'Request'),
+          CustomTxtBtn(Txt: 'Request', Page: RequestScreen(),),
 
           //Services
-          CustomTxtBtn(Txt: 'Services'),
+          CustomTxtBtn(Txt: 'Services', Page: AboutUsScreen(),),
 
           //SignUp
-          CustomAppBarBtn(Txt: 'SignUp'),
+          CustomAppBarBtn(Txt: 'SignUp', Page: SignUpScreen(),),
 
           //Login
-          CustomAppBarBtn(Txt: 'Login'),
+          CustomAppBarBtn(Txt: 'Login', Page: LoginScreen()),
         ],
       ),
 
@@ -252,14 +256,16 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                         Column(
                           children: [
                             //leg top
-                            /* Container(
+                            */
+/* Container(
                                 margin: EdgeInsets.only(bottom: 150, left: 480),
                                 child: Transform(
                                     transform: Matrix4.rotationY(math.pi),
                                     child: Image.asset(
                                       "assets/images/background/Icon material-pets.png",color: colrTextBtn,
                                       width: 85,
-                                    ))),*/
+                                    ))),*//*
+
 
                             //title 1
                             Padding(
@@ -654,3 +660,4 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
     );
   }
 }
+*/

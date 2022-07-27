@@ -8,8 +8,14 @@ import '../../widgets/Buttons/CustomBtn.dart';
 import '../../widgets/Buttons/CustomDropMenuBtn.dart';
 import '../../widgets/Buttons/CustomTxtBtn.dart';
 
+import '../../widgets/Footer/Footerr.dart';
 import '../../widgets/Text/CustomTxt.dart';
 import '../../widgets/Text/CustomTxtFormField.dart';
+import '../Adaption/AdaptionHomeScreen.dart';
+import '../Authentication/Login/LoginScreen.dart';
+import '../Authentication/SignUp/SignUpScreen.dart';
+import '../Home/HomeScreen.dart';
+import '../Request/RequestScreen.dart';
 
 
 class HelpFriendScreen extends StatefulWidget {
@@ -24,29 +30,35 @@ class _HelpFriendScreenState extends State<HelpFriendScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: brown,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image:
+                  AssetImage('assets/images/background/Rectangle 11.png'),
+                  fit: BoxFit.cover)),
+        ),
         leading: Image.asset(
           "assets/images/Logo/logo.png",
         ),
         leadingWidth: 300,
         actions: [
           //About Us
-          CustomTxtBtn(Txt: 'About Us'),
+          CustomTxtBtn(Txt: 'About Us', Page: HomeScreen(),),
 
           //Categories
-          CustomTxtBtn(Txt: 'Categories'),
+          CustomTxtBtn(Txt: 'Adaptaion', Page: AdaptionHomeScreen(),),
 
           //Request
-          CustomTxtBtn(Txt: 'Request'),
+          CustomTxtBtn(Txt: 'Request', Page: RequestScreen(),),
 
           //Services
-          CustomTxtBtn(Txt: 'Services'),
+          CustomTxtBtn(Txt: 'Services', Page: HomeScreen(),),
 
           //SignUp
-          CustomAppBarBtn(Txt: 'SignUp'),
+          CustomAppBarBtn(Txt: 'SignUp', Page: SignUpScreen(),),
 
           //Login
-          CustomAppBarBtn(Txt: 'Login'),
+          CustomAppBarBtn(Txt: 'Login', Page: LoginScreen()),
         ],
       ),
       body: Container(
@@ -153,17 +165,17 @@ class _HelpFriendScreenState extends State<HelpFriendScreen> {
 
                     //Button Send
                     SizedBox(height: 15),
-                    CustomBtn(TxtBtn: 'Send', TxtColrBtn: colrTextBtn, ColrBtn: brown),
+                    CustomBtn(TxtBtn: 'Send', TxtColrBtn: colrTextBtn, ColrBtn: brown,Page: HomeScreen()),
 
                     //Button Sign Up
                     SizedBox(height: 18),
-                    CustomBtn(TxtBtn: 'Call', TxtColrBtn: brown, ColrBtn: colrTextBtn),
+                    CustomBtn(TxtBtn: 'Call', TxtColrBtn: brown, ColrBtn: colrTextBtn,Page: HomeScreen()),
 
 
                     //didn't have account
                     SizedBox(height: 30),
-                    /*Container(
-                      color: Colors.red,
+                    Container(
+                      //color: Colors.red,
                       padding: const EdgeInsets.only(bottom: 50),
                       child: Row(
                         //mainAxisAlignment: MainAxisAlignment.center,
@@ -171,12 +183,18 @@ class _HelpFriendScreenState extends State<HelpFriendScreen> {
 
                         ],
                       ),
-                    ),*/
+                    ),
 
                   ],
                 ),
               ),
-              //body
+
+              //footer
+              Padding(
+                padding: const EdgeInsets.only(top:1050),
+                child: Footerr(),
+              )
+
 
 
 

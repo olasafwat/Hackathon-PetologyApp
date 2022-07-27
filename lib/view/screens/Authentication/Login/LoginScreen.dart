@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -13,7 +15,8 @@ import '../../../widgets/Footer/Footerr.dart';
 import '../../../widgets/Text/CustomTxt.dart';
 import '../../../widgets/Text/CustomTxtFormField.dart';
 import '../../AboutUs/AboutUsScreen.dart';
-import '../../Categories/CategoriesScreen.dart';
+import '../../Adaption/AdaptionHomeScreen.dart';
+import '../../Home/HomeScreen.dart';
 import '../../Request/RequestScreen.dart';
 import '../../Services/ServicesScreen.dart';
 import '../SignUp/SignUpScreen.dart';
@@ -30,29 +33,35 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: brown,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image:
+                  AssetImage('assets/images/background/Rectangle 11.png'),
+                  fit: BoxFit.cover)),
+        ),
         leading: Image.asset(
           "assets/images/Logo/logo.png",
         ),
         leadingWidth: 300,
         actions: [
           //About Us
-          CustomTxtBtn(Txt: 'About Us'),
+          CustomTxtBtn(Txt: 'About Us', Page: HomeScreen(),),
 
           //Categories
-          CustomTxtBtn(Txt: 'Categories'),
+          CustomTxtBtn(Txt: 'Adaptaion', Page: AdaptionHomeScreen(),),
 
           //Request
-          CustomTxtBtn(Txt: 'Request'),
+          CustomTxtBtn(Txt: 'Request', Page: RequestScreen(),),
 
           //Services
-          CustomTxtBtn(Txt: 'Services'),
+          CustomTxtBtn(Txt: 'Services', Page: HomeScreen(),),
 
           //SignUp
-          CustomAppBarBtn(Txt: 'SignUp'),
+          CustomAppBarBtn(Txt: 'SignUp', Page: SignUpScreen(),),
 
           //Login
-          CustomAppBarBtn(Txt: 'Login'),
+          CustomAppBarBtn(Txt: 'Login', Page: LoginScreen()),
         ],
       ),
       body: Container(
@@ -108,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(height: 18),
 
                     //Button Login
-                    CustomBtn(TxtBtn: 'Login', TxtColrBtn: colrTextBtn, ColrBtn: brown,),
+                    CustomBtn(TxtBtn: 'Login', TxtColrBtn: colrTextBtn, ColrBtn: brown, Page: HomeScreen(),),
 
                     //Forget Password
                     Padding(
@@ -153,7 +162,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             Title: 'Facebook',
                             ColorBtn: blue,
                             ColorTxt: white,
-                            SizeImg: 42),
+                            SizeImg: 42,
+                          Page: HomeScreen(),),
 
                         SizedBox(
                           width: 30,
@@ -164,7 +174,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             Title: 'Google',
                             ColorBtn: white,
                             ColorTxt: black,
-                            SizeImg: 30),
+                            SizeImg: 30,
+                            Page: HomeScreen()),
+
                       ],
                     ),
 
@@ -185,7 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () {
                               Navigator.push(context, MaterialPageRoute(
                                   builder: (BuildContext context) {
-                                return LoginScreen();
+                                return SignUpScreen();
                               }));
                             },
                             child: CustomTxt(
@@ -203,6 +215,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
 
               ),
+
+              //footer
+              Padding(
+                padding: const EdgeInsets.only(top:1050),
+                child: Footerr(),
+              )
 
 
             ],

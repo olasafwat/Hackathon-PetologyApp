@@ -9,13 +9,26 @@ class CustomBtn extends StatelessWidget {
   String? TxtBtn;
   Color TxtColrBtn;
   Color ColrBtn;
+  StatefulWidget Page;
 
 
   CustomBtn({
      required this.TxtBtn,
      required this.TxtColrBtn,
     required this.ColrBtn,
+    required this.Page,
+
   });
+
+  late BuildContext context;
+  void NavigatorTo(BuildContext context)
+  {
+    Navigator.push(context, MaterialPageRoute(
+        builder: (BuildContext context) {
+          return Page;
+        }));
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +45,7 @@ class CustomBtn extends StatelessWidget {
           //backgroundColor: Colors.transparent
         ),
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(
-              builder: (BuildContext context) {
-                return LoginScreen();
-              }));
+          return NavigatorTo(context);
         },
         child: Padding(
           padding:

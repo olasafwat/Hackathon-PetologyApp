@@ -14,8 +14,14 @@ import '../../widgets/Buttons/CustomTxtBtn.dart';
 import '../../widgets/Footer/Footerr.dart';
 import '../../widgets/Footer/FooterForm.dart';
 import '../../widgets/Text/CustomTxt.dart';
+import '../Adaption/AdaptionHomeScreen.dart';
 import '../Authentication/Login/LoginScreen.dart';
 import 'dart:math' as math;
+
+import '../Authentication/SignUp/SignUpScreen.dart';
+import '../ChooseDogsOrCats/ChooseDogsOrCatsScreen.dart';
+import '../Help/HelpFriendScreen.dart';
+import '../Request/RequestScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -38,29 +44,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   AssetImage('assets/images/background/Rectangle 11.png'),
                   fit: BoxFit.cover)),
         ),
-        //backgroundColor: brown,
         leading: Image.asset(
           "assets/images/Logo/logo.png",
         ),
         leadingWidth: 300,
         actions: [
           //About Us
-          CustomTxtBtn(Txt: 'About Us'),
+          CustomTxtBtn(Txt: 'About Us', Page: HomeScreen(),),
 
           //Categories
-          CustomTxtBtn(Txt: 'Categories'),
+          CustomTxtBtn(Txt: 'Adaptaion', Page: AdaptionHomeScreen(),),
 
           //Request
-          CustomTxtBtn(Txt: 'Request'),
+          CustomTxtBtn(Txt: 'Request', Page: RequestScreen(),),
 
           //Services
-          CustomTxtBtn(Txt: 'Services'),
+          CustomTxtBtn(Txt: 'Services', Page: HomeScreen(),),
 
           //SignUp
-          CustomAppBarBtn(Txt: 'SignUp'),
+          CustomAppBarBtn(Txt: 'SignUp', Page: SignUpScreen(),),
 
           //Login
-          CustomAppBarBtn(Txt: 'Login'),
+          CustomAppBarBtn(Txt: 'Login', Page: LoginScreen()),
         ],
       ),
 
@@ -113,7 +118,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             txtBtn: "Help them",
                             colTxtBtn: black,
                             fontSize: fontBtn,
-                            colIconArrow: black),
+                            colIconArrow: black,
+                          Page: HelpFriendScreen(),),
                       ],
                     ),
                   ),
@@ -303,7 +309,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           thicknessBorder: 3,
                                           txtBtn: "Dogs",
                                           colrTxtBtn: aftergray,
-                                          fontSizeBtn: fontLastText2),
+                                          fontSizeBtn: fontLastText2,
+                                          Page: AdaptionHomeScreen(),),
                                     ),
 
                                     //img
@@ -337,7 +344,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           thicknessBorder: 1,
                                           txtBtn: "Cats",
                                           colrTxtBtn: aftergray,
-                                          fontSizeBtn: fontLastText2),
+                                          fontSizeBtn: fontLastText2,
+                                          Page: AdaptionHomeScreen()),
                                     ),
 
                                     //img
@@ -408,7 +416,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                         thicknessBorder: 3,
                                         txtBtn: "Caty",
                                         colrTxtBtn: aftergray,
-                                        fontSizeBtn: fontLoginText),
+                                        fontSizeBtn: fontLoginText,
+                                        Page: AdaptionHomeScreen()),
                                   ),
 
                                   //img
@@ -429,8 +438,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                       child: CustomBorderBtn(
                                         colBtn: white,
                                         thickness: 3,
-                                        colThickness:  colrTextBtn,
-                                        colTxt: aftergray,
+                                        colThickness: aftergray,
+                                        colTxt: colrTextBtn,
+                                          Page: AdaptionHomeScreen(),
+
                                       ),
                                     ),
                                   ),
@@ -456,7 +467,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       thicknessBorder: 3,
                                       txtBtn: "Elsa",
                                       colrTxtBtn: aftergray,
-                                      fontSizeBtn: fontLoginText),
+                                      fontSizeBtn: fontLoginText,
+                                      Page: AdaptionHomeScreen()),
                                 ),
 
                                 //img
@@ -477,8 +489,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: CustomBorderBtn(
                                       colBtn: white,
                                       thickness: 3,
-                                      colThickness:  colrTextBtn,
-                                      colTxt: aftergray,
+                                      colThickness: aftergray,
+                                      colTxt: colrTextBtn,
+                                        Page: AdaptionHomeScreen()
                                     ),
                                   ),
                                 ),
@@ -503,7 +516,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                       thicknessBorder: 3,
                                       txtBtn: "Doby",
                                       colrTxtBtn: aftergray,
-                                      fontSizeBtn: fontLoginText),
+                                      fontSizeBtn: fontLoginText,
+                                      Page: AdaptionHomeScreen()),
                                 ),
 
                                 //img
@@ -524,8 +538,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: CustomBorderBtn(
                                       colBtn: white,
                                       thickness: 3,
-                                      colThickness:  colrTextBtn,
-                                      colTxt: aftergray,
+                                      colThickness: aftergray,
+                                      colTxt: colrTextBtn,
+                                        Page: AdaptionHomeScreen()
                                     ),
                                   ),
                                 ),
@@ -549,7 +564,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             txtBtn: "Show more",
                             colTxtBtn: colrTextBtn,
                             fontSize: fontBtn,
-                            colIconArrow: colrTextBtn),
+                            colIconArrow: colrTextBtn,
+                            Page: AdaptionHomeScreen()),
                       ],
                     )
                   ],
@@ -585,6 +601,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               txtBtn: 'Pet Food',
                               imgBtn: 'assets/images/icons/Group 75.png',
                               sizeImg: 100,
+                              Page: ChooseDogsOrCatsScreen(),
                             ),
                             SizedBox(
                               width: 50,
@@ -593,6 +610,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               txtBtn: 'Tranpostaion',
                               imgBtn: 'assets/images/icons/transportation.png',
                               sizeImg: 130,
+                                Page: ChooseDogsOrCatsScreen()
                             ),
                             SizedBox(
                               width: 50,
@@ -601,6 +619,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               txtBtn: 'Toys',
                               imgBtn: 'assets/images/icons/toys.png',
                               sizeImg: 120,
+                                Page: ChooseDogsOrCatsScreen()
                             ),
                             SizedBox(
                               width: 50,
@@ -608,7 +627,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             CustomCircleBtn(
                                 txtBtn: 'Bowls and Cups',
                                 imgBtn: 'assets/images/icons/bowl.png',
-                                sizeImg: 130),
+                                sizeImg: 130,
+                                Page: ChooseDogsOrCatsScreen()),
                           ],
                         ),
 
@@ -620,7 +640,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             CustomCircleBtn(
                                 txtBtn: 'Inoculation',
                                 imgBtn: 'assets/images/icons/Inoculation.png',
-                                sizeImg: 120),
+                                sizeImg: 120,
+                                Page: ChooseDogsOrCatsScreen()),
 
                             SizedBox(
                               width: 50,
@@ -628,7 +649,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             CustomCircleBtn(
                                 txtBtn: 'Sleeping Area',
                                 imgBtn: 'assets/images/icons/bed.png',
-                                sizeImg: 100),
+                                sizeImg: 100,
+                                Page: ChooseDogsOrCatsScreen()),
 
                             SizedBox(
                               width: 50,
@@ -636,7 +658,8 @@ class _HomeScreenState extends State<HomeScreen> {
                             CustomCircleBtn(
                                 txtBtn: 'Vitamins',
                                 imgBtn: 'assets/images/icons/vitamins.png',
-                                sizeImg: 120),
+                                sizeImg: 120,
+                                Page: ChooseDogsOrCatsScreen()),
                           ],
                         )
                       ],

@@ -10,6 +10,7 @@ class CustomAuthBtn extends StatelessWidget {
   Color ColorBtn;
   Color ColorTxt;
   double? SizeImg;
+  StatefulWidget Page;
 
 
   CustomAuthBtn({
@@ -18,8 +19,18 @@ class CustomAuthBtn extends StatelessWidget {
     required this.ColorBtn,
     required this.ColorTxt,
     required this.SizeImg,
+    required this.Page,
 
   });
+
+  void NavigatorTo(BuildContext context)
+  {
+    Navigator.push(context, MaterialPageRoute(
+        builder: (BuildContext context) {
+          return Page;
+        }));
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +43,7 @@ class CustomAuthBtn extends StatelessWidget {
                 borderRadius: BorderRadius.circular(22.5)),
           ),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (BuildContext context) {
-              return LoginScreen();
-            }));
+            return NavigatorTo(context);
           },
           icon: Image.asset(
             "$ImgLogo",

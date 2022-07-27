@@ -12,6 +12,7 @@ class CustomHoverBtn extends StatelessWidget {
   String? txtBtn;
   Color colrTxtBtn;
   double? fontSizeBtn;
+  StatefulWidget Page;
 
   CustomHoverBtn({
     required this.widthBtn,
@@ -22,7 +23,17 @@ class CustomHoverBtn extends StatelessWidget {
     required this.txtBtn,
     required this.colrTxtBtn,
     required this.fontSizeBtn,
+    required this.Page,
   });
+
+  void NavigatorTo(BuildContext context)
+  {
+    Navigator.push(context, MaterialPageRoute(
+        builder: (BuildContext context) {
+          return Page;
+        }));
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +51,7 @@ class CustomHoverBtn extends StatelessWidget {
 
 
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(
-              builder: (BuildContext context) {
-                return LoginScreen();
-              }));
+          return NavigatorTo(context);
         },
         child: Padding(
           padding: const EdgeInsets.only(

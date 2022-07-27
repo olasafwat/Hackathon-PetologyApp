@@ -10,14 +10,24 @@ class CustomCircleBtn extends StatelessWidget {
   String? txtBtn;
   String? imgBtn;
   double? sizeImg;
+  StatefulWidget Page;
 
 
   CustomCircleBtn({
     required this.txtBtn,
     required this.imgBtn,
     required this.sizeImg,
+    required this.Page,
   });
 
+  void NavigatorTo(BuildContext context)
+  {
+    Navigator.push(context, MaterialPageRoute(
+        builder: (BuildContext context) {
+          return Page;
+        }));
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +42,7 @@ class CustomCircleBtn extends StatelessWidget {
             child: FloatingActionButton(
               backgroundColor: brown,
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (BuildContext context) {
-                      return LoginScreen();
-                    }));
+                return NavigatorTo(context);
               },
               child: Container(
                 margin: EdgeInsets.only(top:60),

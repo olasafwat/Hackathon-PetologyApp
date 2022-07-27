@@ -11,6 +11,7 @@ class CustomArrowBtn extends StatelessWidget {
   Color? colTxtBtn;
   double? fontSize;
   Color? colIconArrow;
+  StatefulWidget Page;
 
   CustomArrowBtn({
     required this.colBtn,
@@ -18,7 +19,17 @@ class CustomArrowBtn extends StatelessWidget {
     required this.colTxtBtn,
     required this.fontSize,
     required this.colIconArrow,
+    required this.Page,
   });
+
+  void NavigatorTo(BuildContext context)
+  {
+    Navigator.push(context, MaterialPageRoute(
+        builder: (BuildContext context) {
+          return Page;
+        }));
+
+  }
 
 
   @override
@@ -37,10 +48,7 @@ class CustomArrowBtn extends StatelessWidget {
               //backgroundColor: Colors.transparent
             ),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return LoginScreen();
-                  }));
+              return NavigatorTo(context);
             },
             child: Padding(
               padding: const EdgeInsets.only(

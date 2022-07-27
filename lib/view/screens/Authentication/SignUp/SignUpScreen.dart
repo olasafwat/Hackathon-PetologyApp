@@ -9,8 +9,13 @@ import '../../../widgets/Buttons/CustomBtn.dart';
 import '../../../widgets/Buttons/CustomDropMenuBtn.dart';
 import '../../../widgets/Buttons/CustomTxtBtn.dart';
 
+import '../../../widgets/Footer/Footerr.dart';
 import '../../../widgets/Text/CustomTxt.dart';
 import '../../../widgets/Text/CustomTxtFormField.dart';
+import '../../AboutUs/AboutUsScreen.dart';
+import '../../Adaption/AdaptionHomeScreen.dart';
+import '../../Home/HomeScreen.dart';
+import '../../Request/RequestScreen.dart';
 import '../Login/LoginScreen.dart';
 import 'dart:math' as math;
 
@@ -39,22 +44,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
         leadingWidth: 300,
         actions: [
           //About Us
-          CustomTxtBtn(Txt: 'About Us'),
+          CustomTxtBtn(Txt: 'About Us', Page: HomeScreen(),),
 
           //Categories
-          CustomTxtBtn(Txt: 'Categories'),
+          CustomTxtBtn(Txt: 'Adaptaion', Page: AdaptionHomeScreen(),),
 
           //Request
-          CustomTxtBtn(Txt: 'Request'),
+          CustomTxtBtn(Txt: 'Request', Page: RequestScreen(),),
 
           //Services
-          CustomTxtBtn(Txt: 'Services'),
+          CustomTxtBtn(Txt: 'Services', Page: HomeScreen(),),
 
           //SignUp
-          CustomAppBarBtn(Txt: 'SignUp'),
+          CustomAppBarBtn(Txt: 'SignUp', Page: SignUpScreen(),),
 
           //Login
-          CustomAppBarBtn(Txt: 'Login'),
+          CustomAppBarBtn(Txt: 'Login', Page: LoginScreen()),
         ],
       ),
       body: Container(
@@ -62,25 +67,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: SingleChildScrollView(
           child: Stack(
             children: [
-              //background top
-              Container(
-                  margin: EdgeInsets.only(top: 220, left: 250),
-                  child: Image.asset(
-                    "assets/images/background/Icon material-pets.png",
-                    width: 400,
-                  )),
 
-              //background bottom
-              Container(
-                  margin: EdgeInsets.only(top: 500, left: 850),
-                  child: Image.asset(
-                    "assets/images/background/Icon material-pets.png",
-                    width: 400,
-                  )),
+              Stack(
+                children: [
+                  //background top
+                  Container(
+                      margin: EdgeInsets.only(top: 220, left: 250),
+                      child: Image.asset(
+                        "assets/images/background/Icon material-pets.png",
+                        width: 400,
+                      )),
+
+                  //background bottom
+                  Container(
+                      margin: EdgeInsets.only(top: 500, left: 850),
+                      child: Image.asset(
+                        "assets/images/background/Icon material-pets.png",
+                        width: 400,
+                      )),
 
 
-              //leg top
-              Container(
+                  //leg top
+                  Container(
                       margin: EdgeInsets.only(top: 50, left: 480),
                       child: Transform(
                           transform: Matrix4.rotationY(math.pi),
@@ -89,18 +97,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             width: 85,
                           ))),
 
-              //leg bottom
-              Container(
-                  margin: EdgeInsets.only(top: 880, left: 1060),
-                  child: Image.asset(
-                    "assets/images/leg/small.png",
-                    width: 85,
-                  )),
+                  //leg bottom
+                  Container(
+                      margin: EdgeInsets.only(top: 880, left: 1060),
+                      child: Image.asset(
+                        "assets/images/leg/small.png",
+                        width: 85,
+                      )),
+                ],
+              ),
 
               //border
               Container(
-                margin: EdgeInsets.only(
-                    bottom: 80, left: 420, right: 420,top: 80),
+                margin: EdgeInsets.only(bottom: 80, left: 420, right: 420,top: 80),
                 padding: EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
                   border: Border.all(color: black, width: 2),
@@ -109,6 +118,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
 
                 child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     //Title
                     SizedBox(height: 18),
@@ -130,7 +140,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             Title: 'Facebook',
                             ColorBtn: blue,
                             ColorTxt: white,
-                            SizeImg: 42),
+                            SizeImg: 42,
+                            Page: HomeScreen()),
 
                         SizedBox(
                           width: 30,
@@ -141,7 +152,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             Title: 'Google',
                             ColorBtn: white,
                             ColorTxt: black,
-                            SizeImg: 30),
+                            SizeImg: 30,
+                            Page: HomeScreen()),
                       ],
                     ),
 
@@ -245,7 +257,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),*/
 
-                    CustomBtn(TxtBtn: 'Sign Up', TxtColrBtn: colrTextBtn, ColrBtn: brown),
+                    CustomBtn(TxtBtn: 'Sign Up', TxtColrBtn: colrTextBtn, ColrBtn: brown, Page: HomeScreen(),),
 
                     //didn't have account
                     SizedBox(height: 30),
@@ -280,8 +292,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ],
                 ),
               ),
-              //body
 
+              //footer
+              Padding(
+                padding: const EdgeInsets.only(top:1050),
+                child: Footerr(),
+              )
 
 
             ],
