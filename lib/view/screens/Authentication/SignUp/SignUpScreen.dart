@@ -12,7 +12,6 @@ import '../../../widgets/Buttons/CustomTxtBtn.dart';
 import '../../../widgets/Footer/Footerr.dart';
 import '../../../widgets/Text/CustomTxt.dart';
 import '../../../widgets/Text/CustomTxtFormField.dart';
-import '../../AboutUs/AboutUsScreen.dart';
 import '../../Adaption/AdaptionHomeScreen.dart';
 import '../../Home/HomeScreen.dart';
 import '../../Request/RequestScreen.dart';

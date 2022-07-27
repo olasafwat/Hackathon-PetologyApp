@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hackathon_flutter_petology/view/screens/Authentication/Login/LoginScreen.dart';
 
-import 'view/screens/AboutUs/AboutUsScreen.dart';
 import 'view/screens/Adaption/AdaptionHomeScreen.dart';
 import 'view/screens/Adaption/AdaptionGeneralScreen.dart';
 import 'view/screens/Adaption/AdaptionInfoScreen.dart';

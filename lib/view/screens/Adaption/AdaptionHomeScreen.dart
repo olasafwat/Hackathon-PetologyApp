@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hackathon_flutter_petology/view/screens/AboutUs/AboutUsScreen.dart';
 import 'package:hackathon_flutter_petology/view/widgets/Text/CustomTxt.dart';
 
 import '../../../constants.dart';

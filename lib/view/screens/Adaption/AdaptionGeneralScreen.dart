@@ -9,7 +9,7 @@ import '../../widgets/Footer/Footerr.dart';
 import '../../widgets/Text/CustomTxt.dart';
 import 'dart:math' as math;
 
-import '../AboutUs/AboutUsScreen.dart';
+
 import '../Authentication/Login/LoginScreen.dart';
 import '../Authentication/SignUp/SignUpScreen.dart';
 import '../Home/HomeScreen.dart';
