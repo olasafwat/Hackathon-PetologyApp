@@ -20,9 +20,10 @@ class CustomCircleBtn extends StatelessWidget {
     required this.Page,
   });
 
+  //TODO Function Navigate to Pages
   void NavigatorTo(BuildContext context)
   {
-    Navigator.push(context, MaterialPageRoute(
+    Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) {
           return Page;
         }));

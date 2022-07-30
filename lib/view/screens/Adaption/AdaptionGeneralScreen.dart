@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../../../constants.dart';
-import '../../widgets/Buttons/CustomAppBarBtn.dart';
+import '../../widgets/AppBar/CustomAppBarBtn.dart';
 import '../../widgets/Buttons/CustomBorderBtn.dart';
 import '../../widgets/Buttons/CustomDropMenuBtn.dart';
 import '../../widgets/Buttons/CustomHoverBtn.dart';
-import '../../widgets/Buttons/CustomTxtBtn.dart';
+import '../../widgets/AppBar/CustomTxtAppBarBtn.dart';
+import '../../widgets/AppBar/CustomAppBar.dart';
 import '../../widgets/Footer/Footerr.dart';
 import '../../widgets/Text/CustomTxt.dart';
 import 'dart:math' as math;
-
 
 import '../Authentication/Login/LoginScreen.dart';
 import '../Authentication/SignUp/SignUpScreen.dart';
@@ -28,42 +28,13 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image:
-                  AssetImage('assets/images/background/Rectangle 11.png'),
-                  fit: BoxFit.cover)),
-        ),
-        leading: Image.asset(
-          "assets/images/Logo/logo.png",
-        ),
-        leadingWidth: 300,
-        actions: [
-          //About Us
-          CustomTxtBtn(Txt: 'About Us', Page: HomeScreen(),),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(80.0),
+          child: CustomAppBar()),
 
-          //Categories
-          CustomTxtBtn(Txt: 'Adaptaion', Page: AdaptionHomeScreen(),),
-
-          //Request
-          CustomTxtBtn(Txt: 'Request', Page: RequestScreen(),),
-
-          //Services
-          CustomTxtBtn(Txt: 'Services', Page: HomeScreen(),),
-
-          //SignUp
-          CustomAppBarBtn(Txt: 'SignUp', Page: SignUpScreen(),),
-
-          //Login
-          CustomAppBarBtn(Txt: 'Login', Page: LoginScreen()),
-        ],
-      ),
       body: SingleChildScrollView(
         child: Stack(
           children: [
-
             //background bottom
             Container(
                 margin: EdgeInsets.only(top: 850, left: 250),
@@ -93,9 +64,6 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
 
             Column(
               children: [
-
-
-
                 //Names first (text)
                 Padding(
                   padding: const EdgeInsets.only(top: 90),
@@ -109,7 +77,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomTxt(
                           Title: "Bread",
-                          ColorTxt: aftergray,
+                          ColorTxt: aftergrey,
                           FontSizeTxt: fontLoginText,
                           FontWeightTxt: FontWeight.bold),
 
@@ -119,7 +87,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomTxt(
                           Title: "Age",
-                          ColorTxt: aftergray,
+                          ColorTxt: aftergrey,
                           FontSizeTxt: fontLoginText,
                           FontWeightTxt: FontWeight.bold),
 
@@ -129,7 +97,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomTxt(
                           Title: "Size",
-                          ColorTxt: aftergray,
+                          ColorTxt: aftergrey,
                           FontSizeTxt: fontLoginText,
                           FontWeightTxt: FontWeight.bold),
 
@@ -139,7 +107,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomTxt(
                           Title: "Good with",
-                          ColorTxt: aftergray,
+                          ColorTxt: aftergrey,
                           FontSizeTxt: fontLoginText,
                           FontWeightTxt: FontWeight.bold),
                     ],
@@ -199,7 +167,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomTxt(
                           Title: "Gender",
-                          ColorTxt: aftergray,
+                          ColorTxt: aftergrey,
                           FontSizeTxt: fontLoginText,
                           FontWeightTxt: FontWeight.bold),
 
@@ -209,7 +177,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomTxt(
                           Title: "Color",
-                          ColorTxt: aftergray,
+                          ColorTxt: aftergrey,
                           FontSizeTxt: fontLoginText,
                           FontWeightTxt: FontWeight.bold),
 
@@ -219,7 +187,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomTxt(
                           Title: "Hair Length",
-                          ColorTxt: aftergray,
+                          ColorTxt: aftergrey,
                           FontSizeTxt: fontLoginText,
                           FontWeightTxt: FontWeight.bold),
 
@@ -229,7 +197,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomTxt(
                           Title: "Care & Behavior",
-                          ColorTxt: aftergray,
+                          ColorTxt: aftergrey,
                           FontSizeTxt: fontLoginText,
                           FontWeightTxt: FontWeight.bold),
                     ],
@@ -279,21 +247,24 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                 //card 1
                 Row(
                   children: [
-
                     //Elsa
-                    SizedBox(width: 150,),
+                    SizedBox(
+                      width: 150,
+                    ),
                     Stack(
                       alignment: Alignment.center,
                       children: [
                         CustomHoverBtn(
-                            widthBtn: 340,
-                            heightBtn: 500,
-                            hoverColBtn: colCardAdpat,
-                            colBtn: colCardAdpat,
-                            thicknessBorder: 0,
-                            txtBtn: "Elsa",
-                            colrTxtBtn: aftergray,
-                            fontSizeBtn: fontLoginText, Page: AdaptionInfoScreen(),),
+                          widthBtn: 340,
+                          heightBtn: 500,
+                          hoverColBtn: colCardAdpat,
+                          colBtn: colCardAdpat,
+                          thicknessBorder: 0,
+                          txtBtn: "Elsa",
+                          colrTxtBtn: aftergrey,
+                          fontSizeBtn: fontLoginText,
+                          Page: AdaptionInfoScreen(),
+                        ),
 
                         //img
                         Container(
@@ -312,12 +283,11 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                             minWidth: 250,
                             height: 80,
                             child: CustomBorderBtn(
-                              colBtn: aftergray,
-                              thickness: 0,
-                              colThickness: colrTextBtn,
-                              colTxt: colrTextBtn,
-                                Page: AdaptionInfoScreen()
-                            ),
+                                colBtn: aftergrey,
+                                thickness: 0,
+                                colThickness: colrTextBtn,
+                                colTxt: colrTextBtn,
+                                Page: AdaptionInfoScreen()),
                           ),
                         ),
 
@@ -334,7 +304,9 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                     ),
 
                     //Roy
-                    SizedBox(width: 90,),
+                    SizedBox(
+                      width: 90,
+                    ),
                     Stack(
                       alignment: Alignment.center,
                       children: [
@@ -345,7 +317,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                             colBtn: colCardAdpat,
                             thicknessBorder: 0,
                             txtBtn: "Roy",
-                            colrTxtBtn: aftergray,
+                            colrTxtBtn: aftergrey,
                             fontSizeBtn: fontLoginText,
                             Page: AdaptionInfoScreen()),
 
@@ -366,12 +338,11 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                             minWidth: 250,
                             height: 80,
                             child: CustomBorderBtn(
-                              colBtn: aftergray,
-                              thickness: 0,
-                              colThickness: colrTextBtn,
-                              colTxt: colrTextBtn,
-                                Page: AdaptionInfoScreen()
-                            ),
+                                colBtn: aftergrey,
+                                thickness: 0,
+                                colThickness: colrTextBtn,
+                                colTxt: colrTextBtn,
+                                Page: AdaptionInfoScreen()),
                           ),
                         ),
 
@@ -388,7 +359,9 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                     ),
 
                     //Doby
-                    SizedBox(width: 90,),
+                    SizedBox(
+                      width: 90,
+                    ),
                     Stack(
                       alignment: Alignment.center,
                       children: [
@@ -399,7 +372,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                             colBtn: colCardAdpat,
                             thicknessBorder: 0,
                             txtBtn: "Doby",
-                            colrTxtBtn: aftergray,
+                            colrTxtBtn: aftergrey,
                             fontSizeBtn: fontLoginText,
                             Page: AdaptionInfoScreen()),
 
@@ -420,12 +393,11 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                             minWidth: 250,
                             height: 80,
                             child: CustomBorderBtn(
-                              colBtn: aftergray,
-                              thickness: 0,
-                              colThickness: colrTextBtn,
-                              colTxt: colrTextBtn,
-                                Page: AdaptionInfoScreen()
-                            ),
+                                colBtn: aftergrey,
+                                thickness: 0,
+                                colThickness: colrTextBtn,
+                                colTxt: colrTextBtn,
+                                Page: AdaptionInfoScreen()),
                           ),
                         ),
 
@@ -447,7 +419,9 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                 Row(
                   children: [
                     //Elsa
-                    SizedBox(width: 150,),
+                    SizedBox(
+                      width: 150,
+                    ),
                     Stack(
                       alignment: Alignment.center,
                       children: [
@@ -458,7 +432,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                             colBtn: colCardAdpat,
                             thicknessBorder: 0,
                             txtBtn: "Elsa",
-                            colrTxtBtn: aftergray,
+                            colrTxtBtn: aftergrey,
                             fontSizeBtn: fontLoginText,
                             Page: AdaptionInfoScreen()),
 
@@ -479,12 +453,11 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                             minWidth: 250,
                             height: 80,
                             child: CustomBorderBtn(
-                              colBtn: aftergray,
-                              thickness: 0,
-                              colThickness: colrTextBtn,
-                              colTxt: colrTextBtn,
-                                Page: AdaptionInfoScreen()
-                            ),
+                                colBtn: aftergrey,
+                                thickness: 0,
+                                colThickness: colrTextBtn,
+                                colTxt: colrTextBtn,
+                                Page: AdaptionInfoScreen()),
                           ),
                         ),
 
@@ -501,7 +474,9 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                     ),
 
                     //Roy
-                    SizedBox(width: 90,),
+                    SizedBox(
+                      width: 90,
+                    ),
                     Stack(
                       alignment: Alignment.center,
                       children: [
@@ -512,7 +487,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                             colBtn: colCardAdpat,
                             thicknessBorder: 0,
                             txtBtn: "Roy",
-                            colrTxtBtn: aftergray,
+                            colrTxtBtn: aftergrey,
                             fontSizeBtn: fontLoginText,
                             Page: AdaptionInfoScreen()),
 
@@ -533,12 +508,11 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                             minWidth: 250,
                             height: 80,
                             child: CustomBorderBtn(
-                              colBtn: aftergray,
-                              thickness: 0,
-                              colThickness: colrTextBtn,
-                              colTxt: colrTextBtn,
-                                Page: AdaptionInfoScreen()
-                            ),
+                                colBtn: aftergrey,
+                                thickness: 0,
+                                colThickness: colrTextBtn,
+                                colTxt: colrTextBtn,
+                                Page: AdaptionInfoScreen()),
                           ),
                         ),
 
@@ -555,7 +529,9 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                     ),
 
                     //Doby
-                    SizedBox(width: 90,),
+                    SizedBox(
+                      width: 90,
+                    ),
                     Stack(
                       alignment: Alignment.center,
                       children: [
@@ -566,7 +542,7 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                             colBtn: colCardAdpat,
                             thicknessBorder: 0,
                             txtBtn: "Doby",
-                            colrTxtBtn: aftergray,
+                            colrTxtBtn: aftergrey,
                             fontSizeBtn: fontLoginText,
                             Page: AdaptionInfoScreen()),
 
@@ -587,12 +563,11 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                             minWidth: 250,
                             height: 80,
                             child: CustomBorderBtn(
-                              colBtn: aftergray,
-                              thickness: 0,
-                              colThickness: colrTextBtn,
-                              colTxt: colrTextBtn,
-                                Page: AdaptionInfoScreen()
-                            ),
+                                colBtn: aftergrey,
+                                thickness: 0,
+                                colThickness: colrTextBtn,
+                                colTxt: colrTextBtn,
+                                Page: AdaptionInfoScreen()),
                           ),
                         ),
 
@@ -614,8 +589,6 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
               ],
             ),
           ],
-
-
         ),
       ),
     );

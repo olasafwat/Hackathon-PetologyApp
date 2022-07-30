@@ -14,6 +14,7 @@ class CustomAppBarBtn extends StatelessWidget {
     required this.Page,
   });
 
+  //TODO Function Navigate to Pages
   void NavigatorTo(BuildContext context)
   {
     Navigator.push(context, MaterialPageRoute(
@@ -26,17 +27,18 @@ class CustomAppBarBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      height: 20,
+
+      height: 50,
       width: 120,
+
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           fixedSize: Size(240, 60),
-          primary: brown,
+          primary: colAppBarBtn,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
               side: BorderSide(color: white)),
-          //backgroundColor: Colors.transparent
+
         ),
         onPressed: () {
           return NavigatorTo(context);
@@ -44,7 +46,9 @@ class CustomAppBarBtn extends StatelessWidget {
         child: Text(
           "$Txt",
           style: TextStyle(
-              color: white, fontSize: 15, fontWeight: FontWeight.bold),
+              color: white,
+              fontSize: fontAppBar,
+              fontWeight: FontWeight.bold),
         ),
       ),
 

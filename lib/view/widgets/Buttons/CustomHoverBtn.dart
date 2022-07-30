@@ -26,9 +26,10 @@ class CustomHoverBtn extends StatelessWidget {
     required this.Page,
   });
 
+  //TODO Function Navigate to Pages
   void NavigatorTo(BuildContext context)
   {
-    Navigator.push(context, MaterialPageRoute(
+    Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) {
           return Page;
         }));
@@ -47,7 +48,7 @@ class CustomHoverBtn extends StatelessWidget {
         color: colBtn,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
-            side: BorderSide(color: aftergray,width: thicknessBorder)),
+            side: BorderSide(color: aftergrey,width: thicknessBorder)),
 
 
         onPressed: () {

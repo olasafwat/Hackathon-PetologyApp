@@ -3,8 +3,9 @@ import 'package:hackathon_flutter_petology/view/widgets/Text/CustomTxt.dart';
 
 import '../../../constants.dart';
 import '../../widgets/BackgroundApdation/BackgroundApdation.dart';
-import '../../widgets/Buttons/CustomAppBarBtn.dart';
-import '../../widgets/Buttons/CustomTxtBtn.dart';
+import '../../widgets/AppBar/CustomAppBarBtn.dart';
+import '../../widgets/AppBar/CustomTxtAppBarBtn.dart';
+import '../../widgets/AppBar/CustomAppBar.dart';
 import '../../widgets/Footer/Footerr.dart';
 import '../Authentication/Login/LoginScreen.dart';
 import '../Authentication/SignUp/SignUpScreen.dart';
@@ -22,38 +23,10 @@ class _AdaptionHomeScreenState extends State<AdaptionHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image:
-                  AssetImage('assets/images/background/Rectangle 11.png'),
-                  fit: BoxFit.cover)),
-        ),
-        leading: Image.asset(
-          "assets/images/Logo/logo.png",
-        ),
-        leadingWidth: 300,
-        actions: [
-          //About Us
-          CustomTxtBtn(Txt: 'About Us', Page: HomeScreen(),),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(80.0),
+          child: CustomAppBar()),
 
-          //Categories
-          CustomTxtBtn(Txt: 'Adaptaion', Page: AdaptionHomeScreen(),),
-
-          //Request
-          CustomTxtBtn(Txt: 'Request', Page: RequestScreen(),),
-
-          //Services
-          CustomTxtBtn(Txt: 'Services', Page: HomeScreen(),),
-
-          //SignUp
-          CustomAppBarBtn(Txt: 'SignUp', Page: SignUpScreen(),),
-
-          //Login
-          CustomAppBarBtn(Txt: 'Login', Page: LoginScreen()),
-        ],
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -100,7 +73,6 @@ class _AdaptionHomeScreenState extends State<AdaptionHomeScreen> {
               child: Container(
                 color: Colors.white,
                 width: double.infinity,
-
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -108,7 +80,7 @@ class _AdaptionHomeScreenState extends State<AdaptionHomeScreen> {
                       padding: const EdgeInsets.only(top: 70, left: 70),
                       child: CustomTxt(
                           Title: "How you feed Your Dog?",
-                          ColorTxt: aftergray,
+                          ColorTxt: aftergrey,
                           FontSizeTxt: fontLastTitle,
                           FontWeightTxt: FontWeight.bold),
                     ),
@@ -126,7 +98,7 @@ class _AdaptionHomeScreenState extends State<AdaptionHomeScreen> {
                       child: CustomTxt(
                           Title:
                               "Richard H. Pitcairn, DVM, PhD, author of Dr. Pitcairn’s Complete Guide to Natural Health \n"
-                                  "for Dogs and Cats, believes the most reliable approach is to feed what seems to be a reasonable\n amount and monitor his body weight.",
+                              "for Dogs and Cats, believes the most reliable approach is to feed what seems to be a reasonable\n amount and monitor his body weight.",
                           ColorTxt: brown,
                           FontSizeTxt: fontLoginText,
                           FontWeightTxt: FontWeight.normal),
@@ -170,8 +142,7 @@ class _AdaptionHomeScreenState extends State<AdaptionHomeScreen> {
                     Padding(
                       padding: const EdgeInsets.only(top: 50, left: 70),
                       child: CustomTxt(
-                          Title:
-                              "Different Portions for Different Pooches",
+                          Title: "Different Portions for Different Pooches",
                           ColorTxt: brown,
                           FontSizeTxt: fontLoginText,
                           FontWeightTxt: FontWeight.normal),
@@ -221,8 +192,9 @@ class _AdaptionHomeScreenState extends State<AdaptionHomeScreen> {
                           FontSizeTxt: fontLoginText,
                           FontWeightTxt: FontWeight.normal),
                     ),
-
-                    SizedBox(height: 40,),
+                    SizedBox(
+                      height: 40,
+                    ),
                     Footerr()
                   ],
                 ),

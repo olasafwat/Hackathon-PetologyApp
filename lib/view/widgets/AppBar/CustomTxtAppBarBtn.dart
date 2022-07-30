@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 
-import '../../screens/Authentication/Login/LoginScreen.dart';
 
 
-class CustomTxtBtn extends StatelessWidget {
+
+class CustomTxtAppBarBtn extends StatelessWidget {
   String? Txt;
+  double? sizeBtn;
   StatefulWidget Page;
 
 
-  CustomTxtBtn({
+  CustomTxtAppBarBtn({
     required this.Txt,
     required this.Page,
+    required this.sizeBtn,
   });
 
 
-
+  //TODO Function Navigate to Pages
   void NavigatorTo(BuildContext context)
   {
     Navigator.push(context, MaterialPageRoute(
@@ -32,7 +34,9 @@ class CustomTxtBtn extends StatelessWidget {
       },
       child: Text(
         "$Txt",
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: sizeBtn),
       ),
     );
   }

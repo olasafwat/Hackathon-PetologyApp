@@ -20,10 +20,10 @@ class CustomBtn extends StatelessWidget {
 
   });
 
-  late BuildContext context;
+  //TODO Function Navigate to Pages
   void NavigatorTo(BuildContext context)
   {
-    Navigator.push(context, MaterialPageRoute(
+    Navigator.of(context).push(MaterialPageRoute(
         builder: (BuildContext context) {
           return Page;
         }));

@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 import 'dart:math' as math;
 
-import '../../widgets/Buttons/CustomAppBarBtn.dart';
+import '../../widgets/AppBar/CustomAppBarBtn.dart';
 import '../../widgets/Buttons/CustomBtn.dart';
 import '../../widgets/Buttons/CustomDropMenuBtn.dart';
-import '../../widgets/Buttons/CustomTxtBtn.dart';
+import '../../widgets/AppBar/CustomTxtAppBarBtn.dart';
 
+import '../../widgets/AppBar/CustomAppBar.dart';
 import '../../widgets/Footer/Footerr.dart';
 import '../../widgets/Text/CustomTxt.dart';
 import '../../widgets/Text/CustomTxtFormField.dart';
@@ -29,38 +30,10 @@ class _HelpFriendScreenState extends State<HelpFriendScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image:
-                  AssetImage('assets/images/background/Rectangle 11.png'),
-                  fit: BoxFit.cover)),
-        ),
-        leading: Image.asset(
-          "assets/images/Logo/logo.png",
-        ),
-        leadingWidth: 300,
-        actions: [
-          //About Us
-          CustomTxtBtn(Txt: 'About Us', Page: HomeScreen(),),
+      appBar: PreferredSize(
+          preferredSize: Size.fromHeight(80.0),
+          child: CustomAppBar()),
 
-          //Categories
-          CustomTxtBtn(Txt: 'Adaptaion', Page: AdaptionHomeScreen(),),
-
-          //Request
-          CustomTxtBtn(Txt: 'Request', Page: RequestScreen(),),
-
-          //Services
-          CustomTxtBtn(Txt: 'Services', Page: HomeScreen(),),
-
-          //SignUp
-          CustomAppBarBtn(Txt: 'SignUp', Page: SignUpScreen(),),
-
-          //Login
-          CustomAppBarBtn(Txt: 'Login', Page: LoginScreen()),
-        ],
-      ),
       body: Container(
         alignment: Alignment.center,
         child: SingleChildScrollView(
@@ -112,7 +85,7 @@ class _HelpFriendScreenState extends State<HelpFriendScreen> {
                     //Title
                     CustomTxt(
                       Title: 'Help your friend',
-                      ColorTxt: aftergray,
+                      ColorTxt: aftergrey,
                         FontSizeTxt: fontLastTitle,
                       FontWeightTxt: FontWeight.bold,
                     ),
