@@ -26,7 +26,7 @@ class Provider_HomeScreen_SS with ChangeNotifier
       var url = Uri.parse("${BASE_URL}${HOMEPAGE_SECOND_SECTION}");
       var response = await http.get(url);
       var responsebody = jsonDecode(response.body);
-      print(responsebody);
+      //print(responsebody);
 
 
       SceondSection_List.add(Model_HomeScreen_SS.fromMap(responsebody));

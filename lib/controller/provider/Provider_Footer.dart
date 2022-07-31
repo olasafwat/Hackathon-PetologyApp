@@ -26,7 +26,7 @@ class Provider_Footer with ChangeNotifier
       var url = Uri.parse("${BASE_URL}${FOOTER}");
       var response = await http.get(url);
       var responsebody = jsonDecode(response.body);
-      print(responsebody);
+      //print(responsebody);
 
       Footer_List.add(Model_Footer.fromMap(responsebody));
 

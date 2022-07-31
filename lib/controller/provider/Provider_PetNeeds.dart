@@ -26,7 +26,7 @@ class Provider_PetNeeds with ChangeNotifier
       var url = Uri.parse("${BASE_URL}${PET_NEEDS}");
       var response = await http.get(url);
       var responsebody = jsonDecode(response.body);
-      print(responsebody);
+      //print(responsebody);
 
       for (var i in responsebody)
         {

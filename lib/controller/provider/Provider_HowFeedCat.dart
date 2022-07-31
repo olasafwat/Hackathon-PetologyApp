@@ -26,7 +26,7 @@ class Provider_HowFeedCat with ChangeNotifier
       var url = Uri.parse("${BASE_URL}${HOW_FEED_YOUR_CAT}");
       var response = await http.get(url);
       var responsebody = jsonDecode(response.body);
-      print(responsebody);
+      //print(responsebody);
 
 
       HowFeedCat_List.add(Model_HowFeedCat.fromMap(responsebody));

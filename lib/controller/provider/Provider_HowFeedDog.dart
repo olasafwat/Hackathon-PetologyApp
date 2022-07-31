@@ -27,7 +27,7 @@ class Provider_HowFeedDog with ChangeNotifier
       var url = Uri.parse("${BASE_URL}${HOW_FEED_YOUR_DOG}");
       var response = await http.get(url);
       var responsebody = jsonDecode(response.body);
-      print(responsebody);
+      //print(responsebody);
 
 
       HowFeedDog_List.add(Model_HowFeedDog.fromMap(responsebody));
