@@ -4,8 +4,10 @@ import 'package:hackathon_flutter_petology/view/widgets/Buttons/CustomCircleBtn.
 import 'package:hackathon_flutter_petology/view/widgets/Buttons/CustomSwipeBtn.dart';
 import 'package:hackathon_flutter_petology/view/widgets/Footer/Footerr.dart';
 import 'package:hackathon_flutter_petology/view/widgets/Text/CustomTxt.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
+import '../../../controller/provider/Provider_Footer.dart';
 import '../../widgets/AppBar/CustomAppBarBtn.dart';
 import '../../widgets/AppBar/CustomTxtAppBarBtn.dart';
 import '../../widgets/AppBar/CustomAppBar.dart';
@@ -13,7 +15,7 @@ import '../Authentication/Login/LoginScreen.dart';
 import '../Authentication/SignUp/SignUpScreen.dart';
 import '../Home/HomeScreen.dart';
 import '../Request/RequestScreen.dart';
-import 'AdaptionHomeScreen.dart';
+import 'AdaptionScreen_HowFeedCat.dart';
 
 class AdaptionInfoScreen extends StatefulWidget {
   const AdaptionInfoScreen({Key? key}) : super(key: key);
@@ -276,7 +278,20 @@ class _AdaptionInfoScreenState extends State<AdaptionInfoScreen> {
             ),
 
             //footer
-            Footerr()
+            Consumer<Provider_Footer>(
+                builder: (BuildContext context, value, Widget? child) {
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: value.Footer_List.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Footerr(
+                          email: "${value.Footer_List[index].email}",
+                          location: "${value.Footer_List[index].location}",
+                          phone: "${value.Footer_List[index].phone}",
+                          location2: "${value.Footer_List[index].location2}");
+                    },
+                  );
+                }),
           ],
         ),
       ),

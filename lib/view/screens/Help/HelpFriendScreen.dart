@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
 import 'dart:math' as math;
 
+import '../../../controller/provider/Provider_Footer.dart';
 import '../../widgets/AppBar/CustomAppBarBtn.dart';
 import '../../widgets/Buttons/CustomBtn.dart';
 import '../../widgets/Buttons/CustomDropMenuBtn.dart';
@@ -12,7 +14,7 @@ import '../../widgets/AppBar/CustomAppBar.dart';
 import '../../widgets/Footer/Footerr.dart';
 import '../../widgets/Text/CustomTxt.dart';
 import '../../widgets/Text/CustomTxtFormField.dart';
-import '../Adaption/AdaptionHomeScreen.dart';
+import '../Adaption/AdaptionScreen_HowFeedCat.dart';
 import '../Authentication/Login/LoginScreen.dart';
 import '../Authentication/SignUp/SignUpScreen.dart';
 import '../Home/HomeScreen.dart';
@@ -106,7 +108,11 @@ class _HelpFriendScreenState extends State<HelpFriendScreen> {
                             menuItems: ["USA","Egy"]),*/
 
                     //Category
-                    CustomDropMenuBtn(BoxWidth: boxWidthTxtField),
+                    CustomDropMenuBtn(
+                      BoxWidth: boxWidthTxtField,
+                      selectedValue: 'Category',
+                      ),
+
                     SizedBox(height: 18),
 
                     //Detect your current location
@@ -165,7 +171,20 @@ class _HelpFriendScreenState extends State<HelpFriendScreen> {
               //footer
               Padding(
                 padding: const EdgeInsets.only(top:1050),
-                child: Footerr(),
+                child: Consumer<Provider_Footer>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: value.Footer_List.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Footerr(
+                              email: "${value.Footer_List[index].email}",
+                              location: "${value.Footer_List[index].location}",
+                              phone: "${value.Footer_List[index].phone}",
+                              location2: "${value.Footer_List[index].location2}");
+                        },
+                      );
+                    }),
               )
 
 

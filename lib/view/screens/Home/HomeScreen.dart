@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:hackathon_flutter_petology/view/screens/Adaption/AdaptionGeneralScreen.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
-import '../../../controller/provider/HomeScreen_FS_Provider.dart';
+import '../../../controller/provider/Provider_Footer.dart';
+import '../../../controller/provider/Provider_HomeScreen_FS.dart';
+import '../../../controller/provider/Provider_HomeScreen_SS.dart';
+import '../../../controller/provider/Provider_PetNeeds.dart';
 import '../../widgets/AppBar/CustomAppBarBtn.dart';
 import '../../widgets/Buttons/CustomArrowBtn.dart';
 import '../../widgets/Buttons/CustomBorderBtn.dart';
@@ -14,10 +19,13 @@ import '../../widgets/AppBar/CustomTxtAppBarBtn.dart';
 
 import '../../widgets/AppBar/CustomAppBar.dart';
 import '../../widgets/Cards/Card_HomeScreen_FS.dart';
+import '../../widgets/Cards/Card_HomeScreen_SS.dart';
+import '../../widgets/Cards/Card_PetNeeds.dart';
 import '../../widgets/Footer/Footerr.dart';
 import '../../widgets/Footer/FooterForm.dart';
 import '../../widgets/Text/CustomTxt.dart';
-import '../Adaption/AdaptionHomeScreen.dart';
+import '../Adaption/AdaptionInfoScreen.dart';
+import '../Adaption/AdaptionScreen_HowFeedCat.dart';
 import '../Authentication/Login/LoginScreen.dart';
 import 'dart:math' as math;
 
@@ -49,180 +57,35 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              //Page 1
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    width: 500,
-                    height: 500,
-                    //color: Colors.red,
-                    margin: EdgeInsets.only(top: 80, left: 100),
-                    child: Column(
-                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        //title
-                        Padding(
-                          padding: const EdgeInsets.only(top: 60),
-                          child: CustomTxt(
-                            Title: 'Not only people \nneed a house',
-                            ColorTxt: white,
-                            FontSizeTxt: 50,
-                            FontWeightTxt: FontWeight.bold,
-                          ),
-                        ),
+              //Section 1
+              Consumer<Provider_HomeScreen_FS>(
+                  builder: (BuildContext context, value, Widget? child) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: value.FirstSection_List.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card_HomeScreen_FS(
+                        title: "${value.FirstSection_List[index].title}",
+                        body: "${value.FirstSection_List[index].body}");
+                  },
+                );
+              }),
 
-                        //subtitle
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20, left: 70),
-                          child: CustomTxt(
-                            Title:
-                            'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est. ',
-                            ColorTxt: colSubTitle,
-                            FontSizeTxt: 17,
-                            FontWeightTxt: FontWeight.bold,
-                          ),
-                        ),
+              //Section 2
+              Consumer<Provider_HomeScreen_SS>(
+                  builder: (BuildContext context, value, Widget? child) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: value.SceondSection_List.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Card_HomeScreen_SS(
+                        title: "${value.SceondSection_List[index].title}",
+                        body: "${value.SceondSection_List[index].body}");
+                  },
+                );
+              }),
 
-                        //button help
-                        Container(
-                          margin: EdgeInsets.only(right: 60),
-                          child: CustomArrowBtn(
-                            colBtn: white,
-                            txtBtn: "Help them",
-                            colTxtBtn: black,
-                            fontSize: fontBtn,
-                            colIconArrow: black,
-                            Page: HelpFriendScreen(),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  //img
-                  Stack(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 180, left: 90),
-                        child: Image.asset(
-                          "assets/images/background/white circle background.png",
-                          width: 550,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 374, left: 150),
-                        child: Image.asset(
-                          "assets/images/background/Ellipse 3.png",
-                          height: 200,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 220, bottom: 130),
-                        child: Image.asset("assets/images/pic-aboutus.png",
-                            width: 350),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-
-              //Page 2
-              Container(
-                color: white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    //img
-                    Stack(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 180, left: 90),
-                          child: Image.asset(
-                            "assets/images/background/white circle background.png",
-                            width: 550,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 374, left: 150),
-                          child: Image.asset(
-                            "assets/images/background/Ellipse 3.png",
-                            height: 200,
-                          ),
-                        ),
-
-                        //cat
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 180, bottom: 130, top: 150),
-                          child: Image.asset("assets/images/pic-aboutus22.png",
-                              width: 350),
-                        ),
-
-                        //dog
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: 220, bottom: 130),
-                          child: Image.asset("assets/images/pic-aboutus2.png",
-                              width: 350),
-                        ),
-                      ],
-                    ),
-
-                    //background top right + paragraph
-                    Stack(
-                      children: [
-                        //background top right
-                        Container(
-                            margin: EdgeInsets.only(right: 50, top: 20),
-                            child: Image.asset(
-                              "assets/images/background/Icon material-pets.png",
-                              width: 500,
-                            )),
-
-                        //paragraph
-                        Container(
-                          //alignment: FractionalOffset.center,
-                          //color: Colors.red,
-                          width: 500,
-                          height: 500,
-                          margin: EdgeInsets.only(top: 40, left: 10),
-                          child: Column(
-                            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              //title
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 60, right: 152),
-                                child: CustomTxt(
-                                  Title: 'About Petology',
-                                  ColorTxt: black,
-                                  FontSizeTxt: 50,
-                                  FontWeightTxt: FontWeight.bold,
-                                ),
-                              ),
-
-                              //subtitle
-                              Padding(
-                                padding: const EdgeInsets.only(top: 20),
-                                child: CustomTxt(
-                                  Title:
-                                      "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.",
-                                  ColorTxt: Colors.black45,
-                                  FontSizeTxt: 14,
-                                  FontWeightTxt: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-
-              //Page 3
+              //Section 3
               Container(
                 color: lightblue,
                 height: 600,
@@ -234,15 +97,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         Column(
                           children: [
                             // img leg top
-                             Container(
+                            Container(
                                 margin: EdgeInsets.only(top: 60, left: 480),
                                 child: Transform(
                                     transform: Matrix4.rotationY(math.pi),
                                     child: Image.asset(
-                                      "assets/images/background/Icon material-pets.png",color: colrTextBtn,
+                                      "assets/images/background/Icon material-pets.png",
+                                      color: colrTextBtn,
                                       width: 85,
                                     ))),
-
 
                             //title 1
                             Container(
@@ -287,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         txtBtn: "Dogs",
                                         colrTxtBtn: aftergrey,
                                         fontSizeBtn: fontLastText2,
-                                        Page: AdaptionHomeScreen(),
+                                        Page: AdaptionGeneralScreen(),
                                       ),
                                     ),
 
@@ -323,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           txtBtn: "Cats",
                                           colrTxtBtn: aftergrey,
                                           fontSizeBtn: fontLastText2,
-                                          Page: AdaptionHomeScreen()),
+                                          Page: AdaptionGeneralScreen()),
                                     ),
 
                                     //img
@@ -347,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
 
-              //Page 4
+              //Section 4
               Container(
                 color: white,
                 height: 1000,
@@ -356,14 +219,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     Column(
                       children: [
-
                         // img leg top
                         Container(
                             margin: EdgeInsets.only(top: 60, left: 480),
                             child: Transform(
                                 transform: Matrix4.rotationY(math.pi),
                                 child: Image.asset(
-                                  "assets/images/background/Icon material-pets.png",color: colrTextBtn,
+                                  "assets/images/background/Icon material-pets.png",
+                                  color: colrTextBtn,
                                   width: 85,
                                 ))),
                         //title
@@ -389,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               textDirection: TextDirection.rtl,
                             ),
 
-                            //btn 1
+                            //cat btn 1
                             Container(
                               margin: EdgeInsets.only(left: 70),
                               child: Stack(
@@ -407,7 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         txtBtn: "Caty",
                                         colrTxtBtn: aftergrey,
                                         fontSizeBtn: fontLoginText,
-                                        Page: AdaptionHomeScreen()),
+                                        Page: AdaptionInfoScreen()),
                                   ),
 
                                   //img
@@ -430,7 +293,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         thickness: 3,
                                         colThickness: colrTextBtn,
                                         colTxt: aftergrey,
-                                        Page: AdaptionHomeScreen(),
+                                        Page: AdaptionInfoScreen(),
                                       ),
                                     ),
                                   ),
@@ -457,7 +320,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       txtBtn: "Elsa",
                                       colrTxtBtn: aftergrey,
                                       fontSizeBtn: fontLoginText,
-                                      Page: AdaptionHomeScreen()),
+                                      Page: AdaptionInfoScreen()),
                                 ),
 
                                 //img
@@ -480,7 +343,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         thickness: 3,
                                         colThickness: colrTextBtn,
                                         colTxt: aftergrey,
-                                        Page: AdaptionHomeScreen()),
+                                        Page: AdaptionInfoScreen()),
                                   ),
                                 ),
                               ],
@@ -505,7 +368,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       txtBtn: "Doby",
                                       colrTxtBtn: aftergrey,
                                       fontSizeBtn: fontLoginText,
-                                      Page: AdaptionHomeScreen()),
+                                      Page: AdaptionInfoScreen()),
                                 ),
 
                                 //img
@@ -528,7 +391,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         thickness: 3,
                                         colThickness: colrTextBtn,
                                         colTxt: aftergrey,
-                                        Page: AdaptionHomeScreen()),
+                                        Page: AdaptionInfoScreen()),
                                   ),
                                 ),
                               ],
@@ -554,110 +417,109 @@ class _HomeScreenState extends State<HomeScreen> {
                             colTxtBtn: colrTextBtn,
                             fontSize: fontBtn,
                             colIconArrow: colrTextBtn,
-                            Page: AdaptionHomeScreen()),
+                            Page: ChooseDogsOrCatsScreen()),
                       ],
                     )
                   ],
                 ),
               ),
 
-              //Page 5
+              //Section 5
               Container(
                 color: lightblue,
                 height: 900,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column(
-                      children: [
-
-
-                        //title
-                        Padding(
-                          padding: const EdgeInsets.only(top: 90),
-                          child: CustomTxt(
-                            Title:
-                                'How to take care of \n       your friends? ',
-                            ColorTxt: black,
-                            FontSizeTxt: fontLastTitle,
-                            FontWeightTxt: FontWeight.bold,
+                    Expanded(
+                      child: Column(
+                        children: [
+                          //title
+                          Padding(
+                            padding: const EdgeInsets.only(top: 90),
+                            child: CustomTxt(
+                              Title:
+                                  'How to take care of \n       your friends? ',
+                              ColorTxt: black,
+                              FontSizeTxt: fontLastTitle,
+                              FontWeightTxt: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          height: 100,
-                        ),
-                        Row(
-                          children: [
-                            CustomCircleBtn(
-                              txtBtn: 'Pet Food',
-                              imgBtn: 'assets/images/icons/Group 75.png',
-                              sizeImg: 100,
-                              Page: ChooseDogsOrCatsScreen(),
-                            ),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            CustomCircleBtn(
-                                txtBtn: 'Tranpostaion',
-                                imgBtn:
-                                    'assets/images/icons/transportation.png',
-                                sizeImg: 130,
-                                Page: ChooseDogsOrCatsScreen()),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            CustomCircleBtn(
-                                txtBtn: 'Toys',
-                                imgBtn: 'assets/images/icons/toys.png',
-                                sizeImg: 120,
-                                Page: ChooseDogsOrCatsScreen()),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            CustomCircleBtn(
-                                txtBtn: 'Bowls and Cups',
-                                imgBtn: 'assets/images/icons/bowl.png',
-                                sizeImg: 130,
-                                Page: ChooseDogsOrCatsScreen()),
-                          ],
-                        ),
+                          SizedBox(
+                            height: 100,
+                          ),
 
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Row(
-                          children: [
-                            CustomCircleBtn(
-                                txtBtn: 'Inoculation',
-                                imgBtn: 'assets/images/icons/Inoculation.png',
-                                sizeImg: 120,
-                                Page: ChooseDogsOrCatsScreen()),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            CustomCircleBtn(
-                                txtBtn: 'Sleeping Area',
-                                imgBtn: 'assets/images/icons/bed.png',
-                                sizeImg: 100,
-                                Page: ChooseDogsOrCatsScreen()),
-                            SizedBox(
-                              width: 50,
-                            ),
-                            CustomCircleBtn(
-                                txtBtn: 'Vitamins',
-                                imgBtn: 'assets/images/icons/vitamins.png',
-                                sizeImg: 120,
-                                Page: ChooseDogsOrCatsScreen()),
-                          ],
-                        )
-                      ],
+                          Container(
+                            margin: EdgeInsets.only(left: 80),
+                            child: Consumer<Provider_PetNeeds>(
+                                builder: (BuildContext context, value, Widget? child) {
+                              return MasonryGridView.count(
+                                crossAxisCount: 4,
+                                shrinkWrap: true,
+                                itemCount: value.PetNeeds_List.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Container(
+                                    margin: EdgeInsets.only(top: 30),
+                                    child: Card_PetNeeds(
+                                        title: '${value.PetNeeds_List[index].title}',
+                                        imageUrl: '${value.PetNeeds_List[index].imageUrl}'),
+                                  );
+                                },
+                              );
+                            }),
+                          ),
+
+                          /*Consumer<PetNeeds_Provider>(
+                              builder: (BuildContext context, value, Widget? child) {
+                                return MasonryGridView.count(
+                                  shrinkWrap: true,
+                                  itemCount: value.PetNeed_List.length,
+                                  crossAxisCount: 4,
+                                  itemBuilder: (BuildContext context, int index) {
+                                    return Card_PetNeeds(
+                                      title: '${value.PetNeed_List[index].title}',
+                                      imageUrl: '${value.PetNeed_List[index].imageUrl}',
+                                    );
+                                  },
+
+                                  //scrollDirection: Axis.horizontal,
+
+
+                            */ /*shrinkWrap: true,
+                  itemCount: value.PetNeed_List.length,
+                  itemBuilder: (BuildContext context, int index) {
+                      return Card_PetNeeds(
+                        title: '${value.PetNeed_List[index].title}',
+                        imageUrl: '${value.PetNeed_List[index].imageUrl}',
+                      );
+                  },*/ /*
+
+                                );
+
+
+                              })*/
+                        ],
+                      ),
                     )
                   ],
                 ),
               ),
 
               //Footer
-              Footerr()
+              Consumer<Provider_Footer>(
+                  builder: (BuildContext context, value, Widget? child) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: value.Footer_List.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Footerr(
+                        email: "${value.Footer_List[index].email}",
+                        location: "${value.Footer_List[index].location}",
+                        phone: "${value.Footer_List[index].phone}",
+                        location2: "${value.Footer_List[index].location2}");
+                  },
+                );
+              }),
             ],
           ),
         ),

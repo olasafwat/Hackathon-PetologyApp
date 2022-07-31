@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../constants.dart';
+import '../../../controller/provider/Provider_Footer.dart';
 import '../../widgets/AppBar/CustomAppBarBtn.dart';
 import '../../widgets/Buttons/CustomBorderBtn.dart';
 import '../../widgets/Buttons/CustomDropMenuBtn.dart';
@@ -14,7 +16,7 @@ import '../Authentication/Login/LoginScreen.dart';
 import '../Authentication/SignUp/SignUpScreen.dart';
 import '../Home/HomeScreen.dart';
 import '../Request/RequestScreen.dart';
-import 'AdaptionHomeScreen.dart';
+import 'AdaptionScreen_HowFeedCat.dart';
 import 'AdaptionInfoScreen.dart';
 
 class AdaptionGeneralScreen extends StatefulWidget {
@@ -125,6 +127,8 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomDropMenuBtn(
                         BoxWidth: boxWidthDropMenu,
+                        selectedValue: 'Bread',
+
                       ),
 
                       //Age
@@ -133,6 +137,8 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomDropMenuBtn(
                         BoxWidth: boxWidthDropMenu,
+                        selectedValue: 'Age',
+
                       ),
 
                       //Size
@@ -141,6 +147,8 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomDropMenuBtn(
                         BoxWidth: boxWidthDropMenu,
+                        selectedValue: 'Size',
+
                       ),
 
                       //Good with
@@ -149,6 +157,8 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomDropMenuBtn(
                         BoxWidth: boxWidthDropMenu,
+                        selectedValue: 'Good with',
+
                       )
                     ],
                   ),
@@ -215,6 +225,8 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomDropMenuBtn(
                         BoxWidth: boxWidthDropMenu,
+                        selectedValue: 'Gender',
+
                       ),
 
                       //Color
@@ -223,6 +235,8 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomDropMenuBtn(
                         BoxWidth: boxWidthDropMenu,
+                        selectedValue: 'Color',
+
                       ),
 
                       //Hair Length
@@ -231,6 +245,8 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomDropMenuBtn(
                         BoxWidth: boxWidthDropMenu,
+                        selectedValue: 'Hair Length',
+
                       ),
 
                       //Care & Behavior
@@ -239,6 +255,8 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                       ),
                       CustomDropMenuBtn(
                         BoxWidth: boxWidthDropMenu,
+                        selectedValue: 'Care & Behavior',
+
                       )
                     ],
                   ),
@@ -585,7 +603,20 @@ class _AdaptionGeneralScreenState extends State<AdaptionGeneralScreen> {
                   ],
                 ),
 
-                Footerr()
+                Consumer<Provider_Footer>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: value.Footer_List.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Footerr(
+                              email: "${value.Footer_List[index].email}",
+                              location: "${value.Footer_List[index].location}",
+                              phone: "${value.Footer_List[index].phone}",
+                              location2: "${value.Footer_List[index].location2}");
+                        },
+                      );
+                    }),
               ],
             ),
           ],

@@ -45,6 +45,8 @@ dependencies:
   drop_down_list: ^0.0.2
   find_dropdown: ^1.0.0
   flutter_dropdown: ^1.0.1+hotfix.1
+  flutter_staggered_grid_view:
+  mouse_parallax: ^1.1.0
 
 
 dev_dependencies:

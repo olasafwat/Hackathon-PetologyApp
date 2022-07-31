@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
+import '../../../controller/provider/Provider_Footer.dart';
 import '../../widgets/AppBar/CustomAppBarBtn.dart';
 import '../../widgets/Buttons/CustomBtn.dart';
 import '../../widgets/Buttons/CustomDropMenuBtn.dart';
@@ -11,7 +13,7 @@ import '../../widgets/AppBar/CustomAppBar.dart';
 import '../../widgets/Footer/Footerr.dart';
 import '../../widgets/Text/CustomTxt.dart';
 import '../../widgets/Text/CustomTxtFormField.dart';
-import '../Adaption/AdaptionHomeScreen.dart';
+import '../Adaption/AdaptionScreen_HowFeedCat.dart';
 import '../Authentication/Login/LoginScreen.dart';
 import '../Authentication/SignUp/SignUpScreen.dart';
 import '../Home/HomeScreen.dart';
@@ -108,12 +110,19 @@ class _RequestScreenState extends State<RequestScreen> {
                         //Year
                         Container(
                             margin: EdgeInsets.only(left: 50),
-                            child:
-                            CustomDropMenuBtn(BoxWidth: boxWidthDropMenu)),
+                            child: CustomDropMenuBtn(
+                              BoxWidth: boxWidthDropMenu,
+                              selectedValue: 'Year',
+                              )),
+
                         SizedBox(height: 18),
 
                         //Month
-                        CustomDropMenuBtn(BoxWidth: boxWidthDropMenu),
+                        CustomDropMenuBtn(
+                          BoxWidth: boxWidthDropMenu,
+                          selectedValue: 'Month',
+
+                        ),
                         SizedBox(height: 18),
                       ],
                     ),
@@ -127,12 +136,17 @@ class _RequestScreenState extends State<RequestScreen> {
                         //Size
                         Container(
                             margin: EdgeInsets.only(left: 50),
-                            child:
-                            CustomDropMenuBtn(BoxWidth: boxWidthDropMenu)),
+                            child: CustomDropMenuBtn(
+                              BoxWidth: boxWidthDropMenu,
+                              selectedValue: 'Size',
+                             )),
                         SizedBox(height: 18),
 
                         //Breed
-                        CustomDropMenuBtn(BoxWidth: boxWidthDropMenu),
+                        CustomDropMenuBtn(
+                          BoxWidth: boxWidthDropMenu,
+                          selectedValue: 'Breed',
+                         ),
                         SizedBox(height: 18),
                       ],
                     ),
@@ -146,12 +160,17 @@ class _RequestScreenState extends State<RequestScreen> {
                         //Gender
                         Container(
                             margin: EdgeInsets.only(left: 50),
-                            child:
-                            CustomDropMenuBtn(BoxWidth: boxWidthDropMenu)),
+                            child: CustomDropMenuBtn(
+                              BoxWidth: boxWidthDropMenu,
+                              selectedValue: 'Gender',
+                             )),
                         SizedBox(height: 18),
 
                         //Age
-                        CustomDropMenuBtn(BoxWidth: boxWidthDropMenu),
+                        CustomDropMenuBtn(
+                          BoxWidth: boxWidthDropMenu,
+                          selectedValue: 'Age',
+                          ),
                         SizedBox(height: 18),
                       ],
                     ),
@@ -165,12 +184,17 @@ class _RequestScreenState extends State<RequestScreen> {
                         //Hair Length
                         Container(
                             margin: EdgeInsets.only(left: 50),
-                            child:
-                            CustomDropMenuBtn(BoxWidth: boxWidthDropMenu)),
+                            child: CustomDropMenuBtn(
+                              BoxWidth: boxWidthDropMenu,
+                              selectedValue: 'Hair Length',
+                              )),
                         SizedBox(height: 18),
 
                         //Care & Behavior
-                        CustomDropMenuBtn(BoxWidth: boxWidthDropMenu),
+                        CustomDropMenuBtn(
+                          BoxWidth: boxWidthDropMenu,
+                          selectedValue: 'Care & Behavior',
+                          ),
                         SizedBox(height: 18),
                       ],
                     ),
@@ -184,8 +208,10 @@ class _RequestScreenState extends State<RequestScreen> {
                         //House Trained
                         Container(
                             margin: EdgeInsets.only(left: 50),
-                            child:
-                            CustomDropMenuBtn(BoxWidth: boxWidthDropMenu)),
+                            child: CustomDropMenuBtn(
+                              BoxWidth: boxWidthDropMenu,
+                              selectedValue: 'House Trained',
+                             )),
                         SizedBox(height: 18),
 
                         //Color
@@ -282,7 +308,20 @@ class _RequestScreenState extends State<RequestScreen> {
               //footer
               Padding(
                 padding: const EdgeInsets.only(top:1650),
-                child: Footerr(),
+                child: Consumer<Provider_Footer>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: value.Footer_List.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Footerr(
+                              email: "${value.Footer_List[index].email}",
+                              location: "${value.Footer_List[index].location}",
+                              phone: "${value.Footer_List[index].phone}",
+                              location2: "${value.Footer_List[index].location2}");
+                        },
+                      );
+                    }),
               )
 
             ],

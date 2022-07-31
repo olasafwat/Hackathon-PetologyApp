@@ -6,8 +6,10 @@ import '../../../constants.dart';
 import '../../widgets/Buttons/CustomHoverBtn.dart';
 import '../../widgets/Text/CustomTxt.dart';
 import '../Adaption/AdaptionGeneralScreen.dart';
-import '../Adaption/AdaptionHomeScreen.dart';
+import '../Adaption/AdaptionScreen_HowFeedCat.dart';
 import 'dart:math' as math;
+
+import '../Adaption/AdaptionScreen_HowFeedDog.dart';
 
 class ChooseDogsOrCatsScreen extends StatefulWidget {
   const ChooseDogsOrCatsScreen({Key? key}) : super(key: key);
@@ -106,7 +108,7 @@ class _ChooseDogsOrCatsScreenState extends State<ChooseDogsOrCatsScreen> {
                                       txtBtn: "Dogs",
                                       colrTxtBtn: aftergrey,
                                       fontSizeBtn: fontLastText2,
-                                      Page: AdaptionHomeScreen(),
+                                      Page: AdaptionScreen_HowFeedDog(),
                                     ),
                                   ),
 
@@ -142,7 +144,7 @@ class _ChooseDogsOrCatsScreenState extends State<ChooseDogsOrCatsScreen> {
                                         txtBtn: "Cats",
                                         colrTxtBtn: aftergrey,
                                         fontSizeBtn: fontLastText2,
-                                        Page: AdaptionHomeScreen()),
+                                        Page: AdaptionScreen_HowFeedCat()),
                                   ),
 
                                   //img
@@ -178,3 +180,121 @@ class _ChooseDogsOrCatsScreenState extends State<ChooseDogsOrCatsScreen> {
     );
   }
 }
+
+/*
+
+import 'package:flutter/material.dart';
+
+import '../../../constants.dart';
+
+class CustomDropMenuBtn extends StatefulWidget {
+  // String? selectedValue;
+
+
+  String? selectedValue;
+  List<DropdownMenuItem<String>> menuItems = [];
+  List<String> customList =[];
+  String? labelText;
+
+  var BoxWidth;
+
+  CustomDropMenuBtn({
+    required this.selectedValue,
+    required this.menuItems,
+    required this.BoxWidth,
+  });
+
+*/
+/*  CustomDropMenuBtn.menu({
+    required this.Txt,
+    required this.ValTxt,
+  });
+  CustomDropMenuBtn.rest({
+    required this.selectedValue,
+    required this.labelText,
+    required this.menuItems,
+  });*//*
+
+
+  */
+/*List<DropdownMenuItem<String>> get dropdownItems{
+    List<DropdownMenuItem<String>> menuItems = [
+    //CustomDropMenuBtn.menu(Txt, ValTxt)
+      //DropdownMenuItem(child: Text("Country"),value: "Country"),
+
+      DropdownMenuItem(child: Text("USA"),value: "USA"),
+      DropdownMenuItem(child: Text("England"),value: "England"),
+      DropdownMenuItem(child: Text("England"),value: "England"),
+    ];
+    return menuItems;
+  }*//*
+
+  @override
+  State<CustomDropMenuBtn> createState() => _CustomDropMenuBtnState();
+}
+
+class _CustomDropMenuBtnState extends State<CustomDropMenuBtn> {
+
+  */
+/*void initState() {
+    super.initState();
+
+    widget.menuItems = List.generate(
+      widget.menuItems.length,
+          (index) => DropdownMenuItem(
+        value: widget.menuItems.join(),
+        child: Text(
+          widget.menuItems.join(),
+        ),
+      ),
+    );
+  }*//*
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      borderRadius: BorderRadius.all(Radius.circular(15)),
+      elevation: 18,
+      child: Container(
+        width: widget.BoxWidth,
+        child: DropdownButtonFormField(
+          decoration: InputDecoration(
+            labelText: widget.labelText,
+            //helperText: "Country",
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: transparent, width: 2),
+              borderRadius: BorderRadius.circular(15),
+            ),
+
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: transparent, width: 2),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            //focusColor: white,
+            //filled: true,
+            //fillColor: white,
+          ),
+          dropdownColor: white,
+          value: widget.selectedValue,
+          onChanged: (String? newValue) {
+            setState(() {
+              widget.selectedValue = newValue!;
+            });
+          },
+          items: [].map<DropdownMenuItem<String>>((String value)
+          {
+            return DropdownMenuItem<String>(
+              value: "${widget.selectedValue}",
+              child: Text(
+                value,
+                style: TextStyle(fontSize: 20),
+              ),
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
+}
+*/

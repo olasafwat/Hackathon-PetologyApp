@@ -6,7 +6,18 @@ import 'FooterForm.dart';
 import 'dart:math' as math;
 
 class Footerr extends StatelessWidget {
-  const Footerr({Key? key}) : super(key: key);
+  String? email;
+  String? location;
+  String? phone;
+  String? location2;
+
+
+  Footerr({
+    required this.email,
+    required this.location,
+    required this.phone,
+    required this.location2,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +72,7 @@ class Footerr extends StatelessWidget {
                         margin: EdgeInsets.only(left: 90),
                         child: FooterForm(
                           imgIcon: 'assets/images/icons/email.png',
-                          txtIocn: 'Email@petology.com',
+                          txtIocn: '$email',
                           sizeIcon: 50,
                         ),
                       ),
@@ -72,7 +83,7 @@ class Footerr extends StatelessWidget {
                         margin: EdgeInsets.only(left: 30),
                         child: FooterForm(
                           imgIcon: 'assets/images/icons/phone.png',
-                          txtIocn: '(+2)0123456789',
+                          txtIocn: '$phone',
                           sizeIcon: 40,
                         ),
                       ),
@@ -125,7 +136,7 @@ class Footerr extends StatelessWidget {
                         margin: EdgeInsets.only(left: 90),
                         child: FooterForm(
                           imgIcon: 'assets/images/icons/location-on.png',
-                          txtIocn: 'First settlement/Cairo',
+                          txtIocn: '$location',
                           sizeIcon: 30,
                         ),
                       ),
@@ -137,7 +148,7 @@ class Footerr extends StatelessWidget {
                         margin: EdgeInsets.only(right: 30),
                         child: FooterForm(
                           imgIcon: 'assets/images/icons/location-on.png',
-                          txtIocn: 'Cairo/Egypt',
+                          txtIocn: '$location2',
                           sizeIcon: 30,
                         ),
                       ),

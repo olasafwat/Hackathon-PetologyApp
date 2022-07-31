@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../constants.dart';
+import '../../../../controller/provider/Provider_Footer.dart';
 import '../../../widgets/AppBar/CustomAppBarBtn.dart';
 import '../../../widgets/Buttons/CustomAuthBtn.dart';
 import '../../../widgets/Buttons/CustomBtn.dart';
@@ -13,7 +15,7 @@ import '../../../widgets/AppBar/CustomAppBar.dart';
 import '../../../widgets/Footer/Footerr.dart';
 import '../../../widgets/Text/CustomTxt.dart';
 import '../../../widgets/Text/CustomTxtFormField.dart';
-import '../../Adaption/AdaptionHomeScreen.dart';
+import '../../Adaption/AdaptionScreen_HowFeedCat.dart';
 import '../../Home/HomeScreen.dart';
 import '../../Request/RequestScreen.dart';
 import '../Login/LoginScreen.dart';
@@ -193,7 +195,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             menuItems: ["USA","Egy"]),*/
 
                     //Country
-                    CustomDropMenuBtn(BoxWidth: boxWidthTxtField),
+                    CustomDropMenuBtn(
+                      BoxWidth: boxWidthTxtField,
+                      selectedValue: 'Country',
+                    ),
+
                     SizedBox(height: 18),
 
                     //Button Sign Up
@@ -268,7 +274,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
               //footer
               Padding(
                 padding: const EdgeInsets.only(top:1050),
-                child: Footerr(),
+                child: Consumer<Provider_Footer>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: value.Footer_List.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Footerr(
+                              email: "${value.Footer_List[index].email}",
+                              location: "${value.Footer_List[index].location}",
+                              phone: "${value.Footer_List[index].phone}",
+                              location2: "${value.Footer_List[index].location2}");
+                        },
+                      );
+                    }),
               )
 
 

@@ -4,9 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:footer/footer.dart';
+import 'package:mouse_parallax/mouse_parallax.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../constants.dart';
 
+import '../../../../controller/provider/Provider_Footer.dart';
 import '../../../widgets/AppBar/CustomAppBarBtn.dart';
 import '../../../widgets/Buttons/CustomAuthBtn.dart';
 import '../../../widgets/Buttons/CustomBtn.dart';
@@ -15,7 +18,7 @@ import '../../../widgets/AppBar/CustomAppBar.dart';
 import '../../../widgets/Footer/Footerr.dart';
 import '../../../widgets/Text/CustomTxt.dart';
 import '../../../widgets/Text/CustomTxtFormField.dart';
-import '../../Adaption/AdaptionHomeScreen.dart';
+import '../../Adaption/AdaptionScreen_HowFeedCat.dart';
 import '../../Home/HomeScreen.dart';
 import '../../Request/RequestScreen.dart';
 import '../../Services/ServicesScreen.dart';
@@ -41,21 +44,50 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           child: Stack(
             children: [
-              //img
+              //img without eyes
               Center(
                 child: Container(
-                  margin: EdgeInsets.only(top: 90),
-                  child: SvgPicture.asset(
-                    "assets/images/Eye/Dog paw-cuate.svg",
-                    width: 250,
-                    height: 250,
+                  //margin: EdgeInsets.only(top: 10),
+                  child: Image.asset(
+                    "assets/images/Eye/Dog_paw-cuate1.png",
+                    width: 400,
+                    height: 400,
                   ),
+                ),
+              ),
+
+
+              //eyes
+              Center(
+                child: Container(
+                  height: 320,
+                  margin: EdgeInsets.only(top: 33,left: 582),
+                  child: ParallaxStack(
+                    layers: [
+                      ParallaxLayer(
+                        //enable3d: true,
+                        //yRotation: 0.1,zRotation:0.1,xRotation: 0.10,
+                        yOffset: 10,
+                        xOffset: 10 ,
+                        child:Image.asset(
+                        "assets/images/Eye/eyes.png",
+                       // width: 350,
+                       // height: 350,
+                      ),)
+                    ],
+                  ),
+                 /* child: Image.asset(
+                    "assets/images/Eye/eyes.png",
+                    width: 350,
+                    height: 350,
+                  ),*/
+
                 ),
               ),
 
               //border
               Container(
-                margin: EdgeInsets.only(bottom: 100, left: 420, right: 420,top:330 ),
+                margin: EdgeInsets.only(bottom: 100, left: 420, right: 420,top:360 ),
                 padding: EdgeInsets.only(top: 20),
                 decoration: BoxDecoration(
                   border: Border.all(color: black, width: 2),
@@ -191,7 +223,20 @@ class _LoginScreenState extends State<LoginScreen> {
               //footer
               Padding(
                 padding: const EdgeInsets.only(top:1050),
-                child: Footerr(),
+                child: Consumer<Provider_Footer>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: value.Footer_List.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Footerr(
+                              email: "${value.Footer_List[index].email}",
+                              location: "${value.Footer_List[index].location}",
+                              phone: "${value.Footer_List[index].phone}",
+                              location2: "${value.Footer_List[index].location2}");
+                        },
+                      );
+                    }),
               )
 
 

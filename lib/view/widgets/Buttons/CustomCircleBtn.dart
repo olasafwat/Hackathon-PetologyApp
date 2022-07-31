@@ -7,15 +7,16 @@ import '../Text/CustomTxt.dart';
 
 
 class CustomCircleBtn extends StatelessWidget {
-  String? txtBtn;
+
   String? imgBtn;
+  String? txtBtn;
   double? sizeImg;
   StatefulWidget Page;
 
 
   CustomCircleBtn({
-    required this.txtBtn,
     required this.imgBtn,
+    required this.txtBtn,
     required this.sizeImg,
     required this.Page,
   });
@@ -61,7 +62,7 @@ class CustomCircleBtn extends StatelessWidget {
 
         Container(
             margin: EdgeInsets.only(left: 70),
-            child: Image.asset("$imgBtn",width: sizeImg,)),
+            child: Image.network("$imgBtn",width: sizeImg,)),
 
 
       ],

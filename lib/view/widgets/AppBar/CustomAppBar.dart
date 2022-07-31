@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
-import '../../screens/Adaption/AdaptionHomeScreen.dart';
+import '../../screens/Adaption/AdaptionScreen_HowFeedCat.dart';
+import '../../screens/Adaption/AdaptionScreen_HowFeedDog.dart';
 import '../../screens/Authentication/Login/LoginScreen.dart';
 import '../../screens/Authentication/SignUp/SignUpScreen.dart';
 import '../../screens/Home/HomeScreen.dart';
@@ -44,7 +45,7 @@ class CustomAppBar extends StatelessWidget {
           margin: EdgeInsets.only(top: 20),
           child: CustomTxtAppBarBtn(
               Txt: 'Adaptaion',
-              Page: AdaptionHomeScreen(),
+              Page: AdaptionScreen_HowFeedDog(),
               sizeBtn: fontAppBar),
         ),
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../constants.dart';
-import '../../../controller/provider/HomeScreen_FS_Provider.dart';
+import '../../../controller/provider/Provider_HomeScreen_FS.dart';
 import '../../screens/Help/HelpFriendScreen.dart';
 import '../Buttons/CustomArrowBtn.dart';
 import '../Text/CustomTxt.dart';
@@ -25,9 +25,9 @@ class Card_HomeScreen_FS extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Container(
-          width: 500,
+          width: 400,
           height: 500,
-          color: Colors.red,
+          //color: Colors.red,
           margin: EdgeInsets.only(top: 80, left: 100),
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,19 +45,19 @@ class Card_HomeScreen_FS extends StatelessWidget {
 
               //subtitle
               Padding(
-                padding: const EdgeInsets.only(top: 20, left: 70),
+                padding: const EdgeInsets.only(top: 20),
                 child: CustomTxt(
                   Title:
                   '$body',
                   ColorTxt: colSubTitle,
-                  FontSizeTxt: 17,
+                  FontSizeTxt: fontAppBar,
                   FontWeightTxt: FontWeight.bold,
                 ),
               ),
 
               //button help
               Container(
-                margin: EdgeInsets.only(right: 60),
+                margin: EdgeInsets.only(right: 100),
                 child: CustomArrowBtn(
                   colBtn: white,
                   txtBtn: "Help them",
